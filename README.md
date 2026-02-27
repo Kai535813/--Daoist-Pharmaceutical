@@ -5,7 +5,7 @@
 - **Mo Spiegel:**
 - .
 - **Kai Yun Chao:**
-- .
+- Market Class
 - **Simon Sakata:**
 - .
 
