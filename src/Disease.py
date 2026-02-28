@@ -9,7 +9,7 @@ class Disease:
     symptomsTier2 = ["痰湿 (Tán Shī)","湿热 (Shī Rè)","风热 (Fēng Rè)"]
     symptomsTier3 = ["阳虚 (Yáng Xū)","阴虚 (Yīn Xū)","血瘀 (Xuè Yū)"]
    
-    def __init__(self, year, severityIndex, symptoms, nodeCoord, area, cured):
+    def __init__(self, year):
         self.year = year #Takes year count from main file
         self.severityIndex = 0 #Modified by 'getSeverityIndex' method
         self.symptoms = [] #Modified by 'getSymptoms' method
