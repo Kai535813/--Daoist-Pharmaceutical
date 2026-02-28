@@ -19,6 +19,7 @@ Opening scene: The player as the Jade Emperor's Son is sent down to East Asia fo
 ![Game Over](https://github.com/Mo59471/Programming-Group-Project-Immune-System-Tower-Defense-Oriental-Medicine-Tycoon/blob/main/道德家製藥企業-DaoistPharmaceutical/Photos/Game%20Over.png?raw=true)
 
 ## List of Chinese Medicine Ingredients for the Game:
+
 ### Starting Medicine
 * Mercury
 * Arsenic
@@ -30,7 +31,8 @@ Opening scene: The player as the Jade Emperor's Son is sent down to East Asia fo
 * Aristolichic Acid
 * Ginseng
 * Sea Cucumber
-* * Dried Seahorse
+* Dried Seahorse
+  
 ### High End Medicine
 * Swallow Nest
 * Rhinoceros Horn
@@ -41,9 +43,9 @@ Opening scene: The player as the Jade Emperor's Son is sent down to East Asia fo
 # Daoist Pharmaceutical
 ## Group Tasks:
 - **Ethan Tang:**
-- .
+- Main File, Result Class
 - **Mo Spiegel:**
-- .
+- Disease Class, Button Class
 - **Kai Yun Chao:**
 - Market Class
 - **Simon Sakata:**
