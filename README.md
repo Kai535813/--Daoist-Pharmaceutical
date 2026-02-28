@@ -7,5 +7,5 @@
 - **Kai Yun Chao:**
 - Market Class
 - **Simon Sakata:**
-- .
+- Resource Class
 
