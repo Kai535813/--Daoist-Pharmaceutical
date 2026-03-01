@@ -2,6 +2,7 @@
 #Feel free to make any changes you want, input a background, change the screen size, etc.
 #You can also instantiate new buttons by creating new dictionaries in the 'buttonData' list
 #You can change the existing button's parameter by editing the dictionary in the 'buttonData' list, each parameter should be fairly self explanatory (note that c2 and c3 don't do anything right now)
+#-Mo
 
 import pygame
 from Button import Button
@@ -44,3 +45,4 @@ while running:
         if event.type == pygame.QUIT: #Checks to see if the user input was clicking the exit button
 
             running = False #Ends the program once exit is clicked
+
