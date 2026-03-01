@@ -1,3 +1,8 @@
+#Ethan, this main file is compatible with my button class. It displays a button on a blue background that says "Play".
+#Feel free to make any changes you want, input a background, change the screen size, etc.
+#You can also instantiate new buttons by creating new dictionaries in the 'buttonData' list
+#You can change the existing button's parameter by editing the dictionary in the 'buttonData' list, each parameter should be fairly self explanatory (note that c2 and c3 don't do anything right now)
+
 import pygame
 from Button import Button
 from Disease import Disease
@@ -37,4 +42,5 @@ while running:
     display(screen, font1)
     for event in pygame.event.get(): #Checks for all user input events: For loop loops through all events that have occurred since the last frame
         if event.type == pygame.QUIT: #Checks to see if the user input was clicking the exit button
+
             running = False #Ends the program once exit is clicked
