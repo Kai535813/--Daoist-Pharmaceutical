@@ -22,9 +22,6 @@ buttons = []
 for data in buttonData:
     buttons.append(Button(**data)) #**data unpacks all the terms in the dictionary, puts them in the argument of Button
 
-for data in buttonData:
-    buttons.append(Button(**data)) #**data unpacks all the terms in the dictionary, puts them in the argument of Button
-
 running=True
 while running:
     # poll for events
