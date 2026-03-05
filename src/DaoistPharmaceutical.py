@@ -12,7 +12,7 @@ pygame.init()
 screen = pygame.display.set_mode((1472, 836))
 clock = pygame.time.Clock()
 font1 = pygame.font.SysFont('freesanbold.ttf', 50)
-backI = pygame.transform.smoothscale(pygame.image.load('DaoistPharacueticalBackground.png').convert(),(1472,836)) 
+backI = pygame.transform.smoothscale(pygame.image.load('DaoistPharmaceuticalBackground.png').convert(),(1472,836)) 
 buttonData = [ #Stores dictionary for each button's data
     {"label":"Market", "x":1300, "y":210, "w":330, "h":100, "c1":(207,167,160), "c2":(179,141,134), "c3":(118,78,71)}
 ]
@@ -42,4 +42,5 @@ while running:
     clock.tick(10)
 
 pygame.quit()
+
 
