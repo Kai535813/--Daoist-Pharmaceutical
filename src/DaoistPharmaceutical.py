@@ -14,7 +14,7 @@ clock = pygame.time.Clock()
 font1 = pygame.font.SysFont('freesanbold.ttf', 50)
 backI = pygame.transform.smoothscale(pygame.image.load('DaoistPharacueticalBackground.png').convert(),(1472,836)) 
 buttonData = [ #Stores dictionary for each button's data
-    {"label":"Play", "x":410, "y":210, "w":100, "h":100, "c1":(66,173,245), "c2":(56,150,214), "c3":(43,119,171)}
+    {"label":"Market", "x":1300, "y":210, "w":330, "h":100, "c1":(207,167,160), "c2":(179,141,134), "c3":(118,78,71)}
 ]
 buttons = [
 ]
@@ -42,3 +42,4 @@ while running:
     clock.tick(10)
 
 pygame.quit()
+
