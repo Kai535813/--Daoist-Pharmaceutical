@@ -1,9 +1,11 @@
 #Button Class: Mo Spiegel, Period 3B
 
+
 import pygame
 
+
 class Button:
-   def __init__(self, label, x, y, w, h, c1, c2, c3):
+   def __init__(self, label, x, y, w, h, c1, c2, c3, shadowColor):
        self.label = label
        self.x = x
        self.y = y
@@ -12,18 +14,19 @@ class Button:
        self.c1 = c1
        self.c2 = c2
        self.c3 = c3
+       self.shadowColor = shadowColor
        self.over = False #True if user is hovering over button
      
    #Draws button to screen   
    def display(self, screen, font, mouseClicked): #Takes screen as an argument to draw shapes
        #Rectangle: Takes arguments: (surface, color, [x,y,w,h], width, cornerCurves)
-       pygame.draw.rect(screen, (100,100,100), [self.x-5, self.y-5, self.w, self.h], 0, 5) #Drop shadow
+       pygame.draw.rect(screen, self.shadowColor, [self.x-5, self.y-5, self.w, self.h], 0, 30) #Drop shadow
        if self.over == True and mouseClicked == True:
-           pygame.draw.rect(screen, self.c3, [self.x, self.y, self.w, self.h], 0, 5)
+           pygame.draw.rect(screen, self.c3, [self.x, self.y, self.w, self.h], 0, 30)
        elif self.over == False:
-           pygame.draw.rect(screen, self.c1, [self.x, self.y, self.w, self.h], 0, 5)
+           pygame.draw.rect(screen, self.c1, [self.x, self.y, self.w, self.h], 0, 30)
        elif self.over == True:
-           pygame.draw.rect(screen, self.c2, [self.x, self.y, self.w, self.h], 0, 5)
+           pygame.draw.rect(screen, self.c2, [self.x, self.y, self.w, self.h], 0, 30)
           
      
        #Text: Takes arguments: (text, position(in form of rectangle coords))
@@ -39,3 +42,4 @@ class Button:
            self.over = True
        else:
            self.over = False
+
