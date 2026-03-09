@@ -42,13 +42,28 @@ Opening scene: The player as the Jade Emperor's Son is sent down to East Asia fo
 ## UML:
 ![DaoistUML](https://github.com/Mo59471/Programming-Group-Project-Immune-System-Tower-Defense-Oriental-Medicine-Tycoon/blob/main/%E9%81%93%E5%BE%B7%E5%AE%B6%E8%A3%BD%E8%97%A5%E4%BC%81%E6%A5%AD-DaoistPharmaceutical/Photos/Daoist%20Pharaceutical%20UML.jpg?raw=true)
 # Daoist Pharmaceutical
-## Group Tasks:
-- **Ethan Tang:**
-- Main File, Result Class
-- **Mo Spiegel:**
-- Disease Class, Button Class
-- **Kai Yun Chao:**
-- Market Class
-- **Simon Sakata:**
-- Resource Class
+## Group Tasks (Contributions for Project Development: Phase Three):
+
+1. **Ethan Tang**
+   - Main file, Result class, Disease class display functionality
+   - Implemented disease random spawning and displaying
+   - Programmically drew the map
+  
+&nbsp;
+
+2. **Mo Spiegel**
+   - Button Class, Disease Class logic, Main file timer
+   - Implemented Button collision detection, hoverability, and clickability
+  
+&nbsp;
+
+3. **Kai Yun Chao**
+   - Market Class
+   - Implemented Market displaying, called through a button click
+  
+&nbsp;
+
+3. **Simon Sakata**
+   - Resource Class
+   - Implemented resource random spawining and displaying
 
