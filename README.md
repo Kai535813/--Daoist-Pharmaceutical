@@ -52,8 +52,9 @@ Opening scene: The player as the Jade Emperor's Son is sent down to East Asia fo
 &nbsp;
 
 2. **Mo Spiegel**
-   - Button Class, Disease Class logic, Main file timer
+   - Button Class, Disease Class logic
    - Implemented Button collision detection, hoverability, and clickability
+   - Implemented Main File timer
   
 &nbsp;
 
