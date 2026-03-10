@@ -1,13 +1,13 @@
 import pygame
-pygame.init()
-screen = pygame.display.set_mode((800, 600))
-font = pygame.font.SysFont(None, 100)
-
+import random
+import math
 
 class Resource:
   def __init__(self, typE, level):
       self.typE = typE
       self.level = level
+      self.sevIndex = random.randint(6,10)  # Add severity index like Disease
+      self.area = []  # Add area list like Disease
       self.levelOfResource()
 
 
@@ -47,31 +47,46 @@ class Resource:
           rect_y = y + (i // cols) * 50
           pygame.draw.rect(surface, color, (rect_x, rect_y, 40, 40))
 
+  def spread(self,valid,n):
+       x = self.area[len(self.area)-1][0]
+       y = self.area[len(self.area)-1][1]
+       resource=[]
+       c=0
+       while len(resource) < math.ceil(n/2):
+            if random.choice([True,False]):
+                try:
+                    y = y + 11 * random.choice([1,-1])
+                    if valid[x][y]not in resource:
+                        resource.append(valid[x][y])
+                except:
+                    c += 1
+            else:
+                try:
+                    x = x+11*random.choice([1,-1])
+                    if valid[x][y] not in resource:
+                        resource.append(valid[x][y])
+                except:
+                    c += 1
+            if c > 11:
+                print("restart")
+                return(self.randGen(valid))
+       if len(resource)!= math.ceil(n/2):
+                return(self.randGen(valid))
+       return resource
+  def randGen(self,valid):
+       x=random.choice(list(valid.keys()))
+       y=random.choice(list(valid[x].keys()))
+       self.area.append(valid[x][y])
+       return self.spread(valid,self.sevIndex)
+       
 
-# Create some resources for demonstration
-resources = [
-    Resource("M", 2),  # Mine with level 2 -> 2 gray rectangles
-    Resource("F", 3),  # Farm with level 3 -> 3 green rectangles
-    Resource("A", 1),  # Animal with level 1 -> 1 brown rectangle
-]
+   
+  def update(self,valid):
+       append=(self.spread(valid,int(self.sevIndex)+4-int(self.cure())))
+       for i in range(len(append)):
+           self.area.append(append[i])
+       if self.sevIndex==0:
+           return True
+       else: 
+           return self.area
 
-running = True
-while running:
-    screen.fill((0, 0, 0))  # Clear the screen
-
-    # Draw resources
-    y_offset = 50
-    for resource in resources:
-        resource.resourceDisplay(screen, 50, y_offset)
-        # Calculate rows for this resource and add spacing
-        rows = (resource.numBlocks - 1) // 10  # Number of rows (0-based)
-        y_offset += (rows + 1) * 50 + 20  # Height per row + buffer
-
-    pygame.display.update()
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            running = False
-    
-
-
-pygame.quit()
