@@ -1,7 +1,9 @@
 import pygame 
+import random
 # Mo Spiegel 
 from Button import Button
 from Disease import Disease
+from Resources import Resource
 def display(screen, font, mouseClicked):
     pygame.draw.rect(screen, (153,135,132), [1145,15,300,800], 0 ,45) 
     pygame.draw.rect(screen, (230,184,175), [1150,20,300,800], 0 ,45) 
@@ -38,12 +40,18 @@ for x,y,r,g,b in extract(valid):
     pygame.draw.rect(backI, (0,0,0,20),[x+10,y,1,10])
     pygame.draw.rect(backI, (0,0,0,20),[x,y-1,11,1])
     pygame.draw.rect(backI, (r,g,b),[x,y,10,10])
+
 diseases=[Disease(0)]
 timerI={3:diseases[0]}
 disease=timerI[3].randGen(valid)
-print(disease)
 for i in range(len(disease)):
     pygame.draw.rect(backI, (100,0,0),[disease[i][0],disease[i][1],10,10])
+
+resources=[Resource("M", 1)]  # Example: Mine level 1
+resourceTimer={5:resources[0]}  # Start resources at year 5
+resource=resourceTimer[5].randGen(valid)
+for i in range(len(resource)):
+    pygame.draw.rect(backI, (255,255,0),[resource[i][0],resource[i][1],10,10])
 
 for data in buttonData:
     buttons.append(Button(**data)) #**data unpacks all the terms in the dictionary, puts them in the argument of Button
@@ -76,20 +84,22 @@ while running:
     if time >= 2000:
         time = 0
         year = year + 1
-        print(year)
-        print(timerI)
-        if year== 3:
+        try:
             disease=timerI[year].update(valid)
-            print(disease)
             for i in range(len(disease)):
                 pygame.draw.rect(backI, (100,0,0),[disease[i][0],disease[i][1],10,10])
             timerI.update({year+3:diseases[0]})
+        except:
+            pass
+        time = time + clock.tick(10)
+    if time >= 2000:
+        time = 0
+        year = year + 1
         try:
-            disease=timerI[year].update(valid)
-            print("test")
-            for x,y,r,g,b in disease:
-                pygame.draw.rect(backI, (100,0,0),[x,y,10,10])
-            timerI.update({year+3:diseases[0]})
+            resource=resourceTimer[year].update(valid)
+            for i in range(len(resource)):
+                pygame.draw.rect(backI, (255,255,0),[resource[i][0],resource[i][1],10,10])
+            resourceTimer.update({year+3:resources[0]})
         except:
             pass
 
