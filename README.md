@@ -68,4 +68,19 @@ Opening scene: The player as the Jade Emperor's Son is sent down to East Asia fo
 3. **Simon Sakata**
    - Resource Class
    - Implemented resource random spawining and displaying
-
+   
+## ToDo List:
+**Top Priority Tasks:**
+* Update UML with current variables and methods
+* Add a pause Button to stop the in-game timer
+* Connect the Market class and Market button
+* Get started on player data
+       * Intergrate medicines into the Rescource and market class
+       * Create list to track the player's medicine and implement a money system
+       * Write interaction between Disease class and player's medicine and money
+* Ensure claimed pixels cannot be claimed again
+**Long-Term Tasks:**
+* Get started on reputation system
+* Implement story elements
+* Add age demographics to Disease class
+* Implement soundtrack possibly written by Thompson??
