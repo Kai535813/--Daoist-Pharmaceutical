@@ -75,10 +75,11 @@ Opening scene: The player as the Jade Emperor's Son is sent down to East Asia fo
 * Add a pause Button to stop the in-game timer
 * Connect the Market class and Market button
 * Get started on player data
-       * Intergrate medicines into the Rescource and market class
-       * Create list to track the player's medicine and implement a money system
-       * Write interaction between Disease class and player's medicine and money
-* Ensure claimed pixels cannot be claimed again
+  - Intergrate medicines into the Rescource and market class
+  - Create list to track the player's medicine and implement a money system
+  - Write interaction between Disease class and player's medicine and money
+* Ensure claimed pixels cannot be claimed by another class
+  
 **Long-Term Tasks:**
 * Get started on reputation system
 * Implement story elements
