@@ -47,6 +47,12 @@ print(disease)
 for i in range(len(disease)):
     pygame.draw.rect(backI, (100,0,0),[disease[i][0],disease[i][1],10,10])
 
+resources=[Resource("M", 1)]  # Example: Mine level 1
+resourceTimer={5:resources[0]}  # Start resources at year 5
+resource=resourceTimer[5].randGen(valid)
+for i in range(len(resource)):
+    pygame.draw.rect(backI, (255,255,0),[resource[i][0],resource[i][1],10,10])
+
 for data in buttonData:
     buttons.append(Button(**data)) #**data unpacks all the terms in the dictionary, puts them in the argument of Button
 
@@ -88,6 +94,17 @@ while running:
                 timerI.update({year+1:diseases[0]})
             except:
                 pass
+    if time >= 2000:
+        time = 0
+        year = year + 1
+        try:
+            resource=resourceTimer[year].update(valid)
+            for i in range(len(resource)):
+                pygame.draw.rect(backI, (255,255,0),[resource[i][0],resource[i][1],10,10])
+            resourceTimer.update({year+3:resources[0]})
+        except:
+            pass
     clock.tick(10)
 pygame.quit()
+
 
