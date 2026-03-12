@@ -3,6 +3,7 @@ from Market import Market
 # Mo Spiegel 
 from Button import Button
 from Disease import Disease
+from Resources import Resource
 def display(screen, font, mouseClicked):
     pygame.draw.rect(screen, (153,135,132), [1145,15,300,800], 0 ,45) 
     pygame.draw.rect(screen, (230,184,175), [1150,20,300,800], 0 ,45) 
@@ -106,5 +107,6 @@ while running:
             pass
     clock.tick(10)
 pygame.quit()
+
 
 
