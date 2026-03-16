@@ -86,6 +86,8 @@ while running:
                 try:
                     upClasses[d].dictArea[x][y]
                     print(d)
+                    
+                    break 
                 except:
                     print('no work')
         if event.type == pygame.MOUSEBUTTONUP:
