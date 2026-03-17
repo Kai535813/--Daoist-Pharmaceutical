@@ -177,7 +177,7 @@ class Disease:
    def areaRep(self):
        current=len(self.area)-1
        try:
-        self.dictArea.setdefault(self.area[current][0],{}).setdefault(self.area[current][1],'a')
+           self.dictArea.setdefault(self.area[current][0],{}).setdefault(self.area[current][1],'a')
        except:
            pass
 
@@ -196,6 +196,7 @@ class Disease:
        y = random.choice(list(Disease.valid[x].keys()))
        self.area.append(Disease.valid[x][y])
        self.areaRep()
+       del Disease.valid[x][y]
        return self.spread(self.sevIndex)
 
 
@@ -217,6 +218,7 @@ class Disease:
                    return self.delete
                else:
                    self.delete.append(self.area[len(self.area) - 1 - i])
+                   Disease.valid.setdefault(self.area[len(self.area) - 1 - i][0],{}).setdefault(self.area[len(self.area) - 1 - i][1],self.area[len(self.area) - 1 - i])
                    del self.area[len(self.area) - 1 - i]
                    self.areaRep()
            self.cureI = 0
@@ -225,5 +227,6 @@ class Disease:
        for i in range(len(append)):
            self.area.append(append[i])
            self.areaRep()
+           del Disease.valid[append[i][0]][append[i][1]]
        self.cureI = 0
        return self.area
