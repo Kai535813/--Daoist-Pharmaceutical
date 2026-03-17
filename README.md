@@ -73,7 +73,6 @@ Opening scene: The player as the Jade Emperor's Son is sent down to East Asia fo
 **Top Priority Tasks:**
 * Update UML with current variables and methods
 * Add a pause Button to stop the in-game timer
-* Connect the Market class and Market button
 * Get started on player data
   - Intergrate medicines into the Rescource and market class
   - Create list to track the player's medicine and implement a money system
