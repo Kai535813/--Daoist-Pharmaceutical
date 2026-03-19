@@ -1,3 +1,4 @@
+
 # Disease Class: Mo Spiegel, Period 3B
 import math
 import random
@@ -37,6 +38,7 @@ class Disease:
        self.cureI = 0
        self.delete=[]
        self.dictArea={}
+       self.color=(100,0,0)
 
    # Ethan Tang|3B
    def getSymptoms(self):
