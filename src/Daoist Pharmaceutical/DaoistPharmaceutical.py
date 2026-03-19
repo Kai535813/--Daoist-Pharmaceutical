@@ -43,6 +43,8 @@ time = 0
 timerI={}
 upClasses={}
 nPause=True
+playerD=[100,1]
+medcine={'Ars':0}
 clock = pygame.time.Clock()
 font1 = pygame.font.Font("MaShanZheng-Regular.ttf", 50)
 backI = pygame.transform.smoothscale(pygame.image.load('DaoistPharmaceuticalBackground.png').convert(),(1472,836))
@@ -130,7 +132,7 @@ while running:
                     else:
                         print('spread')
                         for i2 in range(len(dPixels)):
-                            pygame.draw.rect(screen, (upClasses[timerI[year+1][i]].color),[dPixels[i2][0],dPixels[i2][1],10,10])                 
+                            pygame.draw.rect(screen, (upClasses[timerI[year][i]].color),[dPixels[i2][0],dPixels[i2][1],10,10])                 
                     if upClasses[timerI[year][i]].cured==False:
                         if year+1 in timerI:
                             timerI[year+1].append(timerI[year][i])
