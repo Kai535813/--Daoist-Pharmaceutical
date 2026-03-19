@@ -23,6 +23,8 @@ def display(screen, font1, font2, mouseClicked):
     pygame.draw.rect(screen, (153,135,132), [1145,15,300,800], 0 ,45) 
     pygame.draw.rect(screen, (230,184,175), [1150,20,300,800], 0 ,45) 
 
+    showButton = False
+
     for d in upClasses:
 
         if upClasses[d].diseaseClicked == 1:
@@ -44,9 +46,10 @@ def display(screen, font1, font2, mouseClicked):
                 sympRect.center = (1170 + 130, 330 + upClasses[d].symptoms.index(i)*30)
                 screen.blit(sympText, sympRect)
             
-            buttons[1].show = True
-        elif upClasses[d].diseaseClicked == -1:
-            buttons[1].show = False 
+            showButton = True
+
+        
+    buttons[1].show = showButton
 
     for i in buttons:
         i.hover()
@@ -119,6 +122,8 @@ while running:
                                 nPause = True
                                 rDis()
                             i.disT = i.disT*-1
+                        elif i.label == "Build Pharmacy":
+                            print("PHARMACY BUILT ON DISEASE")
                 mouseX, mouseY = pygame.mouse.get_pos()
                 mouseX = int(mouseX/11) * 11
                 mouseY = int(mouseY/11) * 11
