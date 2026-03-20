@@ -19,7 +19,7 @@ def rDis():
             pygame.draw.rect(screen, (100,0,0),[upClasses[i].area[i2][0],upClasses[i].area[i2][1],10,10])      
 
 
-def display(screen, font1, font2, mouseClicked):
+def display(screen, font1, font2, font3, mouseClicked):
     pygame.draw.rect(screen, (153,135,132), [1145,15,300,800], 0 ,45) 
     pygame.draw.rect(screen, (230,184,175), [1150,20,300,800], 0 ,45) 
 
@@ -27,23 +27,23 @@ def display(screen, font1, font2, mouseClicked):
 
     for d in upClasses:
 
-        if upClasses[d].diseaseClicked == 1:
-            pygame.draw.rect(screen, (118,78,71), [1170, 160, 260, 500], 0 ,45)
+        if upClasses[d].diseaseClicked == 1: #160
+            pygame.draw.rect(screen, (118,78,71), [1170, 320, 260, 360], 0 ,45)
             title = font1.render("Disease", True, (255, 255, 255))
             titleRect = title.get_rect()  # Gives you a rectangle object the size of the screen
-            titleRect.center = (1170 + 130, 160 + 50)
+            titleRect.center = (1170 + 130, 320 + 50)
             screen.blit(title, titleRect)
             
-            text = font1.render("Symptoms", True, (255,255,255))
+            text = font2.render("Symptoms:", True, (255,255,255))
             textRect = text.get_rect()  # Gives you a rectangle object the size of the screen
-            textRect.center = (1170 + 130, 160 + 110)
+            textRect.center = (1170 + 130, 320 + 100)
             screen.blit(text, textRect)
 
             #Symptoms:
             for i in upClasses[d].symptoms:
-                sympText = font2.render(i, True, (255,255,255))
+                sympText = font3.render(i, True, (255,255,255))
                 sympRect = sympText.get_rect()
-                sympRect.center = (1170 + 130, 330 + upClasses[d].symptoms.index(i)*30)
+                sympRect.center = (1170 + 130, 460 + upClasses[d].symptoms.index(i)*25)
                 screen.blit(sympText, sympRect)
             
             showButton = True
@@ -53,7 +53,10 @@ def display(screen, font1, font2, mouseClicked):
 
     for i in buttons:
         i.hover()
-        i.display(screen, font1, mouseClicked)
+        
+    buttons[0].display(screen, font1, mouseClicked)
+    buttons[1].display(screen, font2, mouseClicked)
+
 
             
     pygame.display.flip() #Updates the pygame screen based on what you've set in memory
@@ -84,11 +87,12 @@ upClasses={}
 nPause=True
 clock = pygame.time.Clock()
 font1 = pygame.font.Font("MaShanZheng-Regular.ttf", 50)
-font2 = pygame.font.Font("MaShanZheng-Regular.ttf", 30)
+font2 = pygame.font.Font("MaShanZheng-Regular.ttf", 40)
+font3 = pygame.font.Font("MaShanZheng-Regular.ttf", 20)
 backI = pygame.transform.smoothscale(pygame.image.load('DaoistPharmaceuticalBackground.png').convert(),(1472,836))
 buttonData = [ #Stores dictionary for each button's data
-    {"label":"Market", "x":1170, "y":40, "w":260, "h":100, "c1":(207,167,160), "c2":(179,141,134), "c3":(118,78,71), "shadowColor":(153,135,132), "show": True},
-    {"label":"Build Pharmacy", "x":1170, "y":600, "w":260, "h":100, "c1":(207,167,160), "c2":(179,141,134), "c3":(118,78,71), "shadowColor":(153,135,132), "show": False}
+    {"label":"Market", "x":1170, "y":700, "w":260, "h":100, "c1":(207,167,160), "c2":(179,141,134), "c3":(118,78,71), "shadowColor":(153,135,132), "show": True},
+    {"label":"Build Pharmacy", "x":1190, "y":600, "w":220, "h":60, "c1":(166, 111, 101), "c2":(133, 89, 81), "c3":(87, 58, 53), "shadowColor":(115, 81, 76), "show": False}
 
 ]
 buttons = []
@@ -148,7 +152,7 @@ while running:
 
 
 
-    display(screen, font1, font2, mouseClicked)
+    display(screen, font1, font2, font3, mouseClicked)
 
 
 
@@ -197,15 +201,3 @@ while running:
             print('deleted')
     clock.tick(10)
 pygame.quit()
-
-
-
-
-
-
-
-
-
-
-
-
