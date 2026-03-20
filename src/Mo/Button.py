@@ -24,17 +24,13 @@ class Button:
     def display(self, screen, font, mouseClicked):  # Takes screen as an argument to draw shapes
         if self.show == True:
             # Rectangle: Takes arguments: (surface, color, [x,y,w,h], width, cornerCurves)
-            pygame.draw.rect(screen, self.shadowColor, [
-                            self.x-5, self.y-5, self.w, self.h], 0, 30)  # Drop shadow
+            pygame.draw.rect(screen, self.shadowColor, [self.x-5, self.y-5, self.w, self.h], 0, 30)  # Drop shadow
             if self.over == True and mouseClicked == True:
-                pygame.draw.rect(screen, self.c3, [
-                                self.x, self.y, self.w, self.h], 0, 30)
+                pygame.draw.rect(screen, self.c3, [self.x, self.y, self.w, self.h], 0, 30)
             elif self.over == False:
-                pygame.draw.rect(screen, self.c1, [
-                                self.x, self.y, self.w, self.h], 0, 30)
+                pygame.draw.rect(screen, self.c1, [self.x, self.y, self.w, self.h], 0, 30)
             elif self.over == True and mouseClicked == False:
-                pygame.draw.rect(screen, self.c2, [
-                                self.x, self.y, self.w, self.h], 0, 30)
+                pygame.draw.rect(screen, self.c2, [self.x, self.y, self.w, self.h], 0, 30)
 
 
             # Text: Takes arguments: (text, position(in form of rectangle coords))
@@ -50,6 +46,3 @@ class Button:
             self.over = True
         else:
             self.over = False
-
-
-
