@@ -1,4 +1,4 @@
-# Disease Class: Mo Spiegel, Period 3B
+# Disease Class
 import math
 import random
 import pygame
@@ -25,21 +25,37 @@ class Disease:
             "风寒(Fēng Hán)": 0.5,
             }
         }
-
-   def __init__(self, year):
+#-----------------------------------------------------------------------------------
+#Added pharmacy parameter to constructor to store presence/absence of pharmacy
+#-----------------------------------------------------------------------------------
+   def __init__(self, year, pharmacy):
        self.year = year  # Takes year count from main file
+       self.pharmacy = pharmacy
+#-----------------------------------------------------------------------------------
+#Added diseaseClicked to track whether disease is clicked or not
+#-----------------------------------------------------------------------------------
        self.diseaseClicked = -1
        self.sevIndex = 0  # Modified by 'getSeverityIndex' method
        self.symptoms = []  # Modified by 'getSymptoms' method
+#-----------------------------------------------------------------------------------
+#Added severities list
+#-----------------------------------------------------------------------------------
        self.severities = [] # Takes severities for each symptom
        self.area = []  # List of coordinates where the disease exists
        self.cured = False
        self.sevMod = 3
-       self.meds = ["Ars", random.randint(2,12)]
+#-----------------------------------------------------------------------------------
+#Changed second term (medicine strength) in self.meds to 0, set to 20 when a pharmacy is built
+#-----------------------------------------------------------------------------------
+       self.meds = ["Ars", 0]
        self.cureI = 0
        self.delete=[]
        self.dictArea={}
 
+
+#-----------------------------------------------------------------------------------
+#Changed this 
+#-----------------------------------------------------------------------------------
    # Ethan Tang|3B
    def getSymptoms(self):
        if self.year <= 80:
@@ -96,7 +112,9 @@ class Disease:
 
 
 
-
+#-----------------------------------------------------------------------------------
+#Reworked getSeverityIndex so that severities are appended to separate list, not the symptoms list
+#-----------------------------------------------------------------------------------
    # Mo Spiegel, Period 3B
    def getSeverityIndex(self):
        for i in self.symptoms:
@@ -182,10 +200,13 @@ class Disease:
            self.dictArea.setdefault(self.area[current][0],{}).setdefault(self.area[current][1],'a')
        except:
            pass
-
+#-----------------------------------------------------------------------------------
+#Removed symptoms/2, made it so that if a pharmacy is placed, the second term in meds is increased to 20 (disease starts curing)
+#-----------------------------------------------------------------------------------
    def cure(self):
-       # The presence of a pharmacy will call the cure method and pass in the list of medicines the pharmacy has, which will decrease the severity of symptoms
-       for i in range(0, int(len(self.symptoms) / 2)):
+       if self.pharmacy == True:
+           self.meds[1]=20
+       for i in range(0, int(len(self.symptoms))):
            for i2 in range(0, int(len(self.meds) / 2)):
                self.cureI = int(self.cureI+ (float (Disease.medicineI[self.meds[i2]] [self.symptoms[i]])* float(self.meds[i2 + len(self.meds) // 2])))
 
@@ -232,4 +253,3 @@ class Disease:
            del Disease.valid[append[i][0]][append[i][1]]
        self.cureI = 0
        return self.area
-
