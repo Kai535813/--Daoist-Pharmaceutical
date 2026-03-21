@@ -1,6 +1,8 @@
     # Button Class: Mo Spiegel, Period 3B
 
-
+#-----------------------------------------------------------------------------------
+#Added a bunch of stuff all over this class, including show member variable; just replace everything in the old button class
+#-----------------------------------------------------------------------------------
 import pygame
 
 
@@ -31,7 +33,6 @@ class Button:
                 pygame.draw.rect(screen, self.c1, [self.x, self.y, self.w, self.h], 0, 30)
             elif self.over == True and mouseClicked == False:
                 pygame.draw.rect(screen, self.c2, [self.x, self.y, self.w, self.h], 0, 30)
-
 
             # Text: Takes arguments: (text, position(in form of rectangle coords))
             text = font.render(self.label, True, (255, 255, 255))
