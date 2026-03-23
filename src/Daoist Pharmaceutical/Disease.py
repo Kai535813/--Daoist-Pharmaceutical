@@ -18,17 +18,242 @@ class Disease:
     symptomsTier2 = ["痰湿(Tan Shi)", "湿热(Shi Re)", "风热(Feng Re)"]
     symptomsTier3 = ["阳虚(Yang Xu)", "阴虚(Yin Xu)", "血瘀(Xue Yu)"]
 
+
     medicineI = {
-        "砷(Arsenic)": {
-            "上火(Shanghuo)": 0.5,
-            "气虚(Qi Xu)": 0.5,
-            "肝气郁结(Gan Qi Yu Jie)": 0.5,
-            "风寒(Feng Han)": 0.5,
-        }
-    }
+        "金銀花(Honeysuckle)": {"上火(Shanghuo)":0.5,
+       "气虚(Qi Xu)":0.5,
+       "肝气郁结(Gan Qi Yu Jie)":0.5,
+       "风寒(Feng Han)":0.5,
+       "痰湿(Tan Shi)":0.5,
+       "湿热(Shi Re)":0.5,
+       "风热(Feng Re)":0.5,
+       "阳虚(Yang Xu)":0.5,
+       "阴虚(Yin Xu)":0.5,
+       "血瘀(Xue Yu)":0.5}, 
+        
+        "枸杞(Goji Berry)": {"上火(Shanghuo)":0.3,
+       "气虚(Qi Xu)":0.3,
+       "肝气郁结(Gan Qi Yu Jie)":0.3,
+       "风寒(Feng Han)":0.3,
+       "痰湿(Tan Shi)":0.3,
+       "湿热(Shi Re)":0.3,
+       "风热(Feng Re)":0.3,
+       "阳虚(Yang Xu)":0.3,
+       "阴虚(Yin Xu)":0.3,
+       "血瘀(Xue Yu)":0.3},
+        
+        "菊花(Chrysanthemum)": {"上火(Shanghuo)":0.4,
+       "气虚(Qi Xu)":0.5,
+       "肝气郁结(Gan Qi Yu Jie)":0.5,
+       "风寒(Feng Han)":0.5,
+       "痰湿(Tan Shi)":0.5,
+       "湿热(Shi Re)":0.5,
+       "风热(Feng Re)":0.5,
+       "阳虚(Yang Xu)":0.5,
+       "阴虚(Yin Xu)":0.5,
+       "血瘀(Xue Yu)":0.5},
+        
+        "砷(Arsenic)": {"上火(Shanghuo)":0.5,
+       "气虚(Qi Xu)":0.5,
+       "肝气郁结(Gan Qi Yu Jie)":0.5,
+       "风寒(Feng Han)":0.5,
+       "痰湿(Tan Shi)":0.5,
+       "湿热(Shi Re)":0.5,
+       "风热(Feng Re)":0.5,
+       "阳虚(Yang Xu)":0.5,
+       "阴虚(Yin Xu)":0.5,
+       "血瘀(Xue Yu)":0.5},
+        
+        "竹蜂(Carpenter Bee)":{"上火(Shanghuo)":0.5,
+       "气虚(Qi Xu)":0.5,
+       "肝气郁结(Gan Qi Yu Jie)":0.5,
+       "风寒(Feng Han)":0.5,
+       "痰湿(Tan Shi)":0.5,
+       "湿热(Shi Re)":0.5,
+       "风热(Feng Re)":0.5,
+       "阳虚(Yang Xu)":0.5,
+       "阴虚(Yin Xu)":0.5,
+       "血瘀(Xue Yu)":0.5}, 
+        
+        "人參(Ginseng)":{"上火(Shanghuo)":0.5,
+       "气虚(Qi Xu)":0.5,
+       "肝气郁结(Gan Qi Yu Jie)":0.5,
+       "风寒(Feng Han)":0.5,
+       "痰湿(Tan Shi)":0.5,
+       "湿热(Shi Re)":0.5,
+       "风热(Feng Re)":0.5,
+       "阳虚(Yang Xu)":0.5,
+       "阴虚(Yin Xu)":0.5,
+       "血瘀(Xue Yu)":0.5},
+        
+        "燕窩(Swallow Nest)":{"上火(Shanghuo)":0.5,
+       "气虚(Qi Xu)":0.5,
+       "肝气郁结(Gan Qi Yu Jie)":0.5,
+       "风寒(Feng Han)":0.5,
+       "痰湿(Tan Shi)":0.5,
+       "湿热(Shi Re)":0.5,
+       "风热(Feng Re)":0.5,
+       "阳虚(Yang Xu)":0.5,
+       "阴虚(Yin Xu)":0.5,
+       "血瘀(Xue Yu)":0.5}, 
+        
+        "水銀(Mercury)":{"上火(Shanghuo)":0.5,
+       "气虚(Qi Xu)":0.5,
+       "肝气郁结(Gan Qi Yu Jie)":0.5,
+       "风寒(Feng Han)":0.5,
+       "痰湿(Tan Shi)":0.5,
+       "湿热(Shi Re)":0.5,
+       "风热(Feng Re)":0.5,
+       "阳虚(Yang Xu)":0.5,
+       "阴虚(Yin Xu)":0.5,
+       "血瘀(Xue Yu)":0.5},
+        
+        "牛黃(Cattle Gallstone)": {"上火(Shanghuo)":0.5,
+       "气虚(Qi Xu)":0.5,
+       "肝气郁结(Gan Qi Yu Jie)":0.5,
+       "风寒(Feng Han)":0.5,
+       "痰湿(Tan Shi)":0.5,
+       "湿热(Shi Re)":0.5,
+       "风热(Feng Re)":0.5,
+       "阳虚(Yang Xu)":0.5,
+       "阴虚(Yin Xu)":0.5,
+       "血瘀(Xue Yu)":0.5}, 
+        
+        "鹿茸(Velvet Deer Antler)":{"上火(Shanghuo)":0.5,
+       "气虚(Qi Xu)":0.5,
+       "肝气郁结(Gan Qi Yu Jie)":0.5,
+       "风寒(Feng Han)":0.5,
+       "痰湿(Tan Shi)":0.5,
+       "湿热(Shi Re)":0.5,
+       "风热(Feng Re)":0.5,
+       "阳虚(Yang Xu)":0.5,
+       "阴虚(Yin Xu)":0.5,
+       "血瘀(Xue Yu)":0.5},
+        
+        "龜板(Turtle Shell)":{"上火(Shanghuo)":0.5,
+       "气虚(Qi Xu)":0.5,
+       "肝气郁结(Gan Qi Yu Jie)":0.5,
+       "风寒(Feng Han)":0.5,
+       "痰湿(Tan Shi)":0.5,
+       "湿热(Shi Re)":0.5,
+       "风热(Feng Re)":0.5,
+       "阳虚(Yang Xu)":0.5,
+       "阴虚(Yin Xu)":0.5,
+       "血瘀(Xue Yu)":0.5}, 
+        
+        "虎骨(Tiger Bone)":{"上火(Shanghuo)":0.5,
+       "气虚(Qi Xu)":0.5,
+       "肝气郁结(Gan Qi Yu Jie)":0.5,
+       "风寒(Feng Han)":0.5,
+       "痰湿(Tan Shi)":0.5,
+       "湿热(Shi Re)":0.5,
+       "风热(Feng Re)":0.5,
+       "阳虚(Yang Xu)":0.5,
+       "阴虚(Yin Xu)":0.5,
+       "血瘀(Xue Yu)":0.5}, 
+        
+        "犀角(Rhinoceros Horn)":{"上火(Shanghuo)":0.5,
+       "气虚(Qi Xu)":0.5,
+       "肝气郁结(Gan Qi Yu Jie)":0.5,
+       "风寒(Feng Han)":0.5,
+       "痰湿(Tan Shi)":0.5,
+       "湿热(Shi Re)":0.5,
+       "风热(Feng Re)":0.5,
+       "阳虚(Yang Xu)":0.5,
+       "阴虚(Yin Xu)":0.5,
+       "血瘀(Xue Yu)":0.5},
+
+       "Ibuprofen":{"上火(Shanghuo)":0.5,
+       "气虚(Qi Xu)":0.5,
+       "肝气郁结(Gan Qi Yu Jie)":0.5,
+       "风寒(Feng Han)":0.5,
+       "痰湿(Tan Shi)":0.5,
+       "湿热(Shi Re)":0.5,
+       "风热(Feng Re)":0.5,
+       "阳虚(Yang Xu)":0.5,
+       "阴虚(Yin Xu)":0.5,
+       "血瘀(Xue Yu)":0.5}, 
+       
+       "Paracetamol":{"上火(Shanghuo)":0.5,
+       "气虚(Qi Xu)":0.5,
+       "肝气郁结(Gan Qi Yu Jie)":0.5,
+       "风寒(Feng Han)":0.5,
+       "痰湿(Tan Shi)":0.5,
+       "湿热(Shi Re)":0.5,
+       "风热(Feng Re)":0.5,
+       "阳虚(Yang Xu)":0.5,
+       "阴虚(Yin Xu)":0.5,
+       "血瘀(Xue Yu)":0.5}, 
+       
+       "Amoxicillin":{"上火(Shanghuo)":0.5,
+       "气虚(Qi Xu)":0.5,
+       "肝气郁结(Gan Qi Yu Jie)":0.5,
+       "风寒(Feng Han)":0.5,
+       "痰湿(Tan Shi)":0.5,
+       "湿热(Shi Re)":0.5,
+       "风热(Feng Re)":0.5,
+       "阳虚(Yang Xu)":0.5,
+       "阴虚(Yin Xu)":0.5,
+       "血瘀(Xue Yu)":0.5}, 
+       
+       "Valacyclovir":{"上火(Shanghuo)":0.5,
+       "气虚(Qi Xu)":0.5,
+       "肝气郁结(Gan Qi Yu Jie)":0.5,
+       "风寒(Feng Han)":0.5,
+       "痰湿(Tan Shi)":0.5,
+       "湿热(Shi Re)":0.5,
+       "风热(Feng Re)":0.5,
+       "阳虚(Yang Xu)":0.5,
+       "阴虚(Yin Xu)":0.5,
+       "血瘀(Xue Yu)":0.5}, 
+       
+       "Rifampin":{"上火(Shanghuo)":0.5,
+       "气虚(Qi Xu)":0.5,
+       "肝气郁结(Gan Qi Yu Jie)":0.5,
+       "风寒(Feng Han)":0.5,
+       "痰湿(Tan Shi)":0.5,
+       "湿热(Shi Re)":0.5,
+       "风热(Feng Re)":0.5,
+       "阳虚(Yang Xu)":0.5,
+       "阴虚(Yin Xu)":0.5,
+       "血瘀(Xue Yu)":0.5}, 
+       
+       "Morphine":{"上火(Shanghuo)":0.5,
+       "气虚(Qi Xu)":0.5,
+       "肝气郁结(Gan Qi Yu Jie)":0.5,
+       "风寒(Feng Han)":0.5,
+       "痰湿(Tan Shi)":0.5,
+       "湿热(Shi Re)":0.5,
+       "风热(Feng Re)":0.5,
+       "阳虚(Yang Xu)":0.5,
+       "阴虚(Yin Xu)":0.5,
+       "血瘀(Xue Yu)":0.5}, 
+       
+       "Fentanyl":{"上火(Shanghuo)":0.5,
+       "气虚(Qi Xu)":0.5,
+       "肝气郁结(Gan Qi Yu Jie)":0.5,
+       "风寒(Feng Han)":0.5,
+       "痰湿(Tan Shi)":0.5,
+       "湿热(Shi Re)":0.5,
+       "风热(Feng Re)":0.5,
+       "阳虚(Yang Xu)":0.5,
+       "阴虚(Yin Xu)":0.5,
+       "血瘀(Xue Yu)":0.5}, 
+       
+       "Tigecycline":{"上火(Shanghuo)":0.5,
+       "气虚(Qi Xu)":0.5,
+       "肝气郁结(Gan Qi Yu Jie)":0.5,
+       "风寒(Feng Han)":0.5,
+       "痰湿(Tan Shi)":0.5,
+       "湿热(Shi Re)":0.5,
+       "风热(Feng Re)":0.5,
+       "阳虚(Yang Xu)":0.5,
+       "阴虚(Yin Xu)":0.5,
+       "血瘀(Xue Yu)":0.5},}
 # -----------------------------------------------------------------------------------
 # Added pharmacy parameter to constructor to store presence/absence of pharmacy
 # -----------------------------------------------------------------------------------
+
 
     def __init__(self, year, accept):
         self.year = year  # Takes year count from main file
@@ -49,7 +274,10 @@ class Disease:
 # -----------------------------------------------------------------------------------
 # Changed second term (medicine strength) in self.meds to 0, set to 20 when a pharmacy is built
 # -----------------------------------------------------------------------------------
-        self.meds = {"砷(Arsenic)":0}
+        self.meds = {"金銀花(Honeysuckle)": 0, "枸杞(Goji Berry)": 0, "菊花(Chrysanthemum)": 0, "砷(Arsenic)": 0, "竹蜂(Carpenter Bee)": 0, "人參(Ginseng)": 0,
+           "燕窩(Swallow Nest)": 0, "水銀(Mercury)": 0, "牛黃(Cattle Gallstone)": 0, "鹿茸(Velvet Deer Antler)": 0,
+           "龜板(Turtle Shell)": 0, "虎骨(Tiger Bone)": 0, "犀角(Rhinoceros Horn)": 0, "Ibuprofen": 0, "Paracetamol": 0,
+           "Amoxicillin": 0, "Valacyclovir": 0, "Rifampin": 0, "Morphine": 0, "Fentanyl": 0, "Tigecycline": 0}
         self.cureI = 0
         self.delete = []
         self.dictArea = {}
@@ -58,10 +286,13 @@ class Disease:
         self.cost=random.randint(100,200)
 
 
+
+
 # -----------------------------------------------------------------------------------
 # Changed this
 # -----------------------------------------------------------------------------------
     # Ethan Tang|3B
+
 
     def getSymptoms(self):
         if self.year <= 80:
@@ -76,6 +307,7 @@ class Disease:
                 if symp not in self.symptoms:
                     self.symptoms.append(symp)
                     x -= 1
+
 
         elif self.year <= 200:
             x = random.randint(1, 3)
@@ -115,10 +347,13 @@ class Disease:
                     x -= 1
 
 
+
+
 # -----------------------------------------------------------------------------------
 # Reworked getSeverityIndex so that severities are appended to separate list, not the symptoms list
 # -----------------------------------------------------------------------------------
     # Mo Spiegel, Period 3B
+
 
     def getSeverityIndex(self):
         for i in self.symptoms:
@@ -129,52 +364,63 @@ class Disease:
                 self.sevIndex = self.sevIndex + \
                     self.severities[len(self.severities) - 1]
 
+
             elif i == "气虚(Qi Xu)":
                 self.severities.append(random.randint(7, 15))
                 self.sevIndex = self.sevIndex + \
                     self.severities[len(self.severities) - 1]
+
 
             elif i == "肝气郁结(Gan Qi Yu Jie)":
                 self.severities.append(random.randint(7, 15))
                 self.sevIndex = self.sevIndex + \
                     self.severities[len(self.severities) - 1]
 
+
             elif i == "风寒(Feng Han)":
                 self.severities.append(random.randint(7, 15))
                 self.sevIndex = self.sevIndex + \
                     self.severities[len(self.severities) - 1]
+
 
             elif i == "痰湿(Tan Shi)":
                 self.severities.append(random.randint(5, 8))
                 self.sevIndex = self.sevIndex + \
                     self.severities[len(self.severities) - 1]
 
+
             elif i == "湿热(Shi Re)":
                 self.severities.append(random.randint(5, 8))
                 self.sevIndex = self.sevIndex + \
                     self.severities[len(self.severities) - 1]
+
 
             elif i == "风热(Feng Re)":
                 self.severities.append(random.randint(5, 8))
                 self.sevIndex = self.sevIndex + \
                     self.severities[len(self.severities) - 1]
 
+
             elif i == "阳虚(Yang Xu)":
                 self.severities.append(random.randint(5, 11))
                 self.sevIndex = self.sevIndex + \
                     self.severities[len(self.severities) - 1]
+
 
             elif i == "阴虚(Yin Xu)":
                 self.severities.append(random.randint(5, 11))
                 self.sevIndex = self.sevIndex + \
                     self.severities[len(self.severities) - 1]
 
+
             elif i == "血瘀(Xue Yu)":
                 self.severities.append(random.randint(5, 11))
                 self.sevIndex = self.sevIndex + \
                     self.severities[len(self.severities) - 1]
 
+
     # Ethan Tang|3B
+
 
     def spread(self, n):
         x = self.area[random.randint(0, len(self.area) - 1)][0]
@@ -197,7 +443,6 @@ class Disease:
                 except:
                     c += 1
             if c > 30:
-                print("restart")
                 return self.spread(n)
         if len(disease) != math.ceil(n / 2):
             return self.spread(Disease.valid)
@@ -205,6 +450,7 @@ class Disease:
             self.area.append(i)
             self.areaRep()
         return disease
+
 
     def areaRep(self):
         current = len(self.area)-1
@@ -217,14 +463,26 @@ class Disease:
 # Removed symptoms/2, made it so that if a pharmacy is placed, the second term in meds is increased to 20 (disease starts curing)
 # -----------------------------------------------------------------------------------
 
+
     def addMeds(self,med,num):
         self.meds[med]=self.meds[med]+num
+
 
     def cure(self):
         for i in range(0, int(len(self.symptoms))):
             for i2 in self.meds:
+                medsN=0
+                if self.meds[i2]>5:
+                    medsN=5
+                elif self.meds[i2]<=0:
+                    medsN=0
+                    self.color=(100,0,0)
+                    self.accept=False
+                else:
+                    medsN=self.meds[i2]
                 self.cureI = int(
-                    self.cureI + (float(Disease.medicineI[i2][self.symptoms[i]]) * float(self.meds[i2])))
+                    self.cureI + (float(Disease.medicineI[i2][self.symptoms[i]]) * float(medsN)*2))
+                self.meds[i2]=self.meds[i2]-medsN
 
     def randGen(self):
         self.getSymptoms()
@@ -236,8 +494,10 @@ class Disease:
         del Disease.valid[x][y]
         return self.spread(self.sevIndex)
 
+
     def changeC(self):
         self.color = (221, 126, 107)
+
 
     def update(self):
         self.cure()
@@ -246,13 +506,14 @@ class Disease:
             self.cured = True
             self.delete = self.area
             self.dictArea = {}
-            return ((self.delete), (self.sevMod-self.cureI)*random.randint(-7, -3), (self.sevMod-self.cureI)*random.randint(-2, -1))
+            return ((self.delete), (self.sevMod-self.cureI)*random.randint(-20, -15), (self.sevMod-self.cureI)*random.randint(-2, -1))
         if self.sevMod - self.cureI < 0:
+            self.cost=0
             self.delete = []
             for i in range(abs(self.sevMod - self.cureI)):
                 if len(self.area)-1-i < 0:
                     self.cureI = 0
-                    return ((self.delete), (self.sevMod-self.cureI)*random.randint(-7, -3), (self.sevMod-self.cureI)*random.randint(-2, -1))
+                    return ((self.delete), self.cureI*random.randint(-20, -15), (self.sevMod-self.cureI)*random.randint(-2, -1))
                 else:
                     self.delete.append(self.area[len(self.area) - 1 - i])
                     Disease.valid.setdefault(self.area[len(self.area) - 1 - i][0], {}).setdefault(
@@ -260,11 +521,11 @@ class Disease:
                     del self.area[len(self.area) - 1 - i]
                     self.areaRep()
             self.cureI = 0
-            return ((self.delete), (self.sevMod-self.cureI)*random.randint(-7, -3), (self.sevMod-self.cureI)*random.randint(-2, -1))
+            return ((self.delete), self.cureI*random.randint(-20, -15), (self.sevMod-self.cureI)*random.randint(-2, -1))
         append = self.spread(self.sevMod - self.cureI)
         for i in range(len(append)):
             self.area.append(append[i])
             self.areaRep()
             del Disease.valid[append[i][0]][append[i][1]]
         self.cureI = 0
-        return ((self.area),0,(self.sevMod-self.cureI)*random.uniform(0.1,0.5))
+        return ((self.area),0,self.cureI*random.uniform(0.1,0.5))
