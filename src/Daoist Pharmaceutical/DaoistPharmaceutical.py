@@ -123,7 +123,7 @@ year = 1
 time = 0
 timerI = {}
 playerD = [500, 20]
-playerM = {"金銀花(Honeysuckle)": 0, "枸杞(Goji Berry)": 0, "菊花(Chrysanthemum)": 0, "砷(Arsenic)": 15, "竹蜂(Carpenter Bee)": 0, "人參(Ginseng)": 0,
+playerM = {"金銀花(Honeysuckle)": 0, "枸杞(Goji Berry)": 0, "菊花(Chrysanthemum)": 0, "砷(Arsenic)": 150, "竹蜂(Carpenter Bee)": 0, "人參(Ginseng)": 0,
            "燕窩(Swallow Nest)": 0, "水銀(Mercury)": 0, "牛黃(Cattle Gallstone)": 0, "鹿茸(Velvet Deer Antler)": 0,
            "龜板(Turtle Shell)": 0, "虎骨(Tiger Bone)": 0, "犀角(Rhinoceros Horn)": 0, "Ibuprofen": 0, "Paracetamol": 0,
            "Amoxicillin": 0, "Valacyclovir": 0, "Rifampin": 0, "Morphine": 0, "Fentanyl": 0, "Tigecycline": 0}
@@ -204,6 +204,7 @@ while running:
                                 if upClasses[disease].diseaseClicked == 1:
                                     upClasses[disease].accept = True
                                     upClasses[disease].changeC()
+                                    playerD[0]=playerD[0]-upClasses[disease].cost
                                     if type(upClasses[disease])==Disease:
                                         med=input(f"Which Medicine Do You Want To Use (All medicines: {playerM})?\n")
                                         while med not in playerM:
@@ -233,7 +234,6 @@ while running:
                                     playerD[0]=playerD[0]-int(i.label.rsplit("$")[1])
                         elif i.label=="Inventory":
                             buttons[2].disT=buttons[2].disT*-1
-                            print('sdfsdfdsfasfsafas')
                 mouseX, mouseY = pygame.mouse.get_pos()
                 mouseX = int(mouseX/11) * 11
                 mouseY = int(mouseY/11) * 11
@@ -246,21 +246,19 @@ while running:
                                 continue
                             else:
                                 upClasses[d1].diseaseClicked = -1
-                        print(d)
                         break 
                     except:
-                        print('no work')
+                        pass
         if event.type == pygame.MOUSEBUTTONUP:
             if event.button == 1:
                 mouseClicked = False
     display(screen, font1, font2, font3, mouseClicked)
     if nPause:
         time = time +100
-        if time >= 1000:
+        if time >= 500:
             time = 0
             year = year + 1
             if year== random.randint(year-1,year+1) and len(upClasses)<7:
-                print("new")
                 r=random.randint(0,1)
                 if r == 1:
                     upClasses[next]=Disease(year,False)
@@ -274,19 +272,19 @@ while running:
                 for i in range(len(dPixels)):
                     pygame.draw.rect(screen, (upClasses[next].color),[dPixels[i][0],dPixels[i][1],10,10])
                 next=next+1
-            print(year)
             if year in timerI:
                 for i in range(len(timerI[year])-1,-1,-1):
                     re=upClasses[timerI[year][i]].update()
                     playerD[0]=playerD[0]+re[1]
                     playerD[1]=playerD[1]-re[2]
                     dPixels=re[0]
+                    if type(upClasses[timerI[year][i]])==Resource and len(re)>3:
+                        playerM[re[3]]=playerM[re[3]]+re[4]
+
                     if dPixels == upClasses[timerI[year][i]].delete:
-                        print('works')
                         for i2 in range(len(dPixels)):
                             pygame.draw.rect(screen, (dPixels[i2][2],dPixels[i2][3],dPixels[i2][4]),[dPixels[i2][0],dPixels[i2][1],10,10])
                     else:
-                        print('spread')
                         for i2 in range(len(dPixels)):
                             pygame.draw.rect(screen, (upClasses[timerI[year][i]].color),[dPixels[i2][0],dPixels[i2][1],10,10])                 
                     if upClasses[timerI[year][i]].cured==False:
@@ -300,6 +298,9 @@ while running:
                 cured.append(i3)
         for i4 in cured:
             del upClasses[i4]
-            print('deleted')
+        if year%7==0:
+            market.stock()
     clock.tick(10)
 pygame.quit()
+
+
