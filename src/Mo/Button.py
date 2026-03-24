@@ -1,8 +1,8 @@
-    # Button Class: Mo Spiegel, Period 3B
+# Button Class: Mo Spiegel, Period 3B
 
-#-----------------------------------------------------------------------------------
-#Added a bunch of stuff all over this class, including show member variable; just replace everything in the old button class
-#-----------------------------------------------------------------------------------
+# -----------------------------------------------------------------------------------
+# Added a bunch of stuff all over this class, including show member variable; just replace everything in the old button class
+# -----------------------------------------------------------------------------------
 import pygame
 
 
@@ -21,25 +21,29 @@ class Button:
         self.over = False  # True if user is hovering over button
         self.disT = 1
 
-
     # Draws button to screen
-    def display(self, screen, font, mouseClicked):  # Takes screen as an argument to draw shapes
+
+    # Takes screen as an argument to draw shapes
+    def display(self, screen, font, mouseClicked):
         if self.show == True:
             # Rectangle: Takes arguments: (surface, color, [x,y,w,h], width, cornerCurves)
-            pygame.draw.rect(screen, self.shadowColor, [self.x-5, self.y-5, self.w, self.h], 0, 30)  # Drop shadow
+            pygame.draw.rect(screen, self.shadowColor, [
+                             self.x-5, self.y-5, self.w, self.h], 0, 30)  # Drop shadow
             if self.over == True and mouseClicked == True:
-                pygame.draw.rect(screen, self.c3, [self.x, self.y, self.w, self.h], 0, 30)
+                pygame.draw.rect(screen, self.c3, [
+                                 self.x, self.y, self.w, self.h], 0, 30)
             elif self.over == False:
-                pygame.draw.rect(screen, self.c1, [self.x, self.y, self.w, self.h], 0, 30)
+                pygame.draw.rect(screen, self.c1, [
+                                 self.x, self.y, self.w, self.h], 0, 30)
             elif self.over == True and mouseClicked == False:
-                pygame.draw.rect(screen, self.c2, [self.x, self.y, self.w, self.h], 0, 30)
+                pygame.draw.rect(screen, self.c2, [
+                                 self.x, self.y, self.w, self.h], 0, 30)
 
             # Text: Takes arguments: (text, position(in form of rectangle coords))
             text = font.render(self.label, True, (255, 255, 255))
             textRect = text.get_rect()  # Gives you a rectangle object the size of the screen
             textRect.center = (self.x + self.w/2, self.y + self.h/2)
             screen.blit(text, textRect)
-
 
     def hover(self):
         mouseX, mouseY = pygame.mouse.get_pos()
