@@ -44,15 +44,19 @@ def display(screen, font1, font2, font3, mouseClicked):
     screen.blit(text, textRect)
 
     showButton = False
-
+    
+    if buttons[0].disT<0:
+        market.display_market(screen)
+        
     if buttons[2].disT<0:
-        pygame.draw.rect(screen, (118, 78, 71), [1170, 135, 260, 557], 0, 30)
-        r=160
+        pygame.draw.rect(screen, (74, 52, 48), [595, 85, 400, 600], 0, 30)
+        pygame.draw.rect(screen, (118, 78, 71), [600, 90, 400, 600], 0, 30)
+        r=120
         for i in playerM:
             if playerM[i]!=0:
-                title=font3.render(f'{i}:{playerM[i]}', True, (255, 255, 255))
+                title=font3.render(f'{i} : {playerM[i]}', True, (255, 255, 255))
                 titleRect = title.get_rect()  # Gives you a rectangle object the size of the screen
-                titleRect.center = (1170 + 130, r)
+                titleRect.center = (600+200, r)
                 screen.blit(title, titleRect)
                 r=r+26
 
@@ -144,7 +148,7 @@ buttonData = [  # Stores dictionary for each button's data
      "c3": (118, 78, 71), "shadowColor": (153, 135, 132), "show":True},
      {"label": "Accept", "x": 1190, "y": 600, "w": 220, "h": 60, "c1": (166, 111, 101), "c2": (
         133, 89, 81), "c3": (87, 58, 53), "shadowColor": (115, 81, 76), "show": False},
-    {"label": "Inventory", "x": 900, "y": 750, "w": 220, "h": 60, "c1": (207, 167, 160), "c2": (
+    {"label": "Inventory", "x": 1170, "y": 625, "w": 260, "h": 60, "c1": (207, 167, 160), "c2": (
         179, 141, 134), "c3": (118, 78, 71), "shadowColor": (153, 135, 132), "show": True}
 ]
 
@@ -172,11 +176,11 @@ while running:
                     mouseX, mouseY = pygame.mouse.get_pos()
                     if mouseX >= i.x and mouseX <= i.x + i.w and mouseY >= i.y and mouseY <= i.y + i.h:
                         if i.label == "Market":
-                            if i.disT > 0:
+                            buttons[0].disT= buttons[0].disT*-1
+                            if i.disT < 0:
                                 nPause = False
                                 # Kai Yun Chao
                                 # Defines all the buttons for the market when activated.
-                                market.display_market(screen)
                                 market_positions = [
                                     (20, 40), (330, 40), (660, 40), (20, 200), (330, 200), (660, 200)]
                                 for (bx, by), (category, (name, cost)) in zip(market_positions, market.inventory.items()):
@@ -191,7 +195,7 @@ while running:
                                 for data in buttonData:
                                     buttons.append(Button(**data))
                                 buttons[0].disT=-1
-                            elif i.disT<0:
+                            elif i.disT>0:
                                 nPause = True
                                 for d in range(len(buttonData)-1,2,-1):
                                     del buttonData[d]
@@ -234,6 +238,10 @@ while running:
                                     playerD[0]=playerD[0]-int(i.label.rsplit("$")[1])
                         elif i.label=="Inventory":
                             buttons[2].disT=buttons[2].disT*-1
+                            if buttons[2].disT <0:
+                                nPause = False
+                            else:
+                                nPause = True
                 mouseX, mouseY = pygame.mouse.get_pos()
                 mouseX = int(mouseX/11) * 11
                 mouseY = int(mouseY/11) * 11
@@ -252,7 +260,6 @@ while running:
         if event.type == pygame.MOUSEBUTTONUP:
             if event.button == 1:
                 mouseClicked = False
-    display(screen, font1, font2, font3, mouseClicked)
     if nPause:
         time = time +100
         if time >= 500:
@@ -300,6 +307,8 @@ while running:
             del upClasses[i4]
         if year%7==0:
             market.stock()
+    display(screen, font1, font2, font3, mouseClicked)
+    rDis()
     clock.tick(10)
 pygame.quit()
 
