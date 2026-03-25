@@ -146,7 +146,7 @@ buttonData = [  # Stores dictionary for each button's data
     {"label": "Market", "x": 1170, "y": 700, "w": 260, "h": 100,
      "c1": (207, 167, 160), "c2": (179, 141, 134),
      "c3": (118, 78, 71), "shadowColor": (153, 135, 132), "show":True},
-     {"label": "Accept", "x": 1190, "y": 600, "w": 220, "h": 60, "c1": (166, 111, 101), "c2": (
+     {"label": "Accept", "x": 1190, "y": 550, "w": 220, "h": 60, "c1": (166, 111, 101), "c2": (
         133, 89, 81), "c3": (87, 58, 53), "shadowColor": (115, 81, 76), "show": False},
     {"label": "Inventory", "x": 1170, "y": 625, "w": 260, "h": 60, "c1": (207, 167, 160), "c2": (
         179, 141, 134), "c3": (118, 78, 71), "shadowColor": (153, 135, 132), "show": True}
