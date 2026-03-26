@@ -1,5 +1,25 @@
 # Daoist Pharmaceutical Overview:
-## General Gameplay Flow:
+
+## How to Setup and Play:
+* Insure that pygame is downloaded
+  * Open your terminal
+  * For mac OS, input python3 -m pip install pygame
+  * For Windows, input python -m install pygame
+* If pygame is installed, then the game should be ready to be ran from either your terminal or an IDE of your choice
+  * For VScode, we notcied that the defalt settings does not have "ExecuteInFileDir" enabled, turn it on through your settings, or the game likely wont run
+* The game will open a seperate window called pygame once the program starts in which you will interact with and play the game
+* Once the game starts, diseases and resources will start randomly spawning
+* Time in game is measured in "Months"
+* The player has reputation and money, once repuation drops below 0, the game ends, but the player can go into debt regarding money
+* Diseases (red pixels that spawn on the map) will actively decrease the player's reputation as it spreads
+* The player can choose to cure the disease by clicking on a red pixel and pressing accept
+* The game will then prompt the player to select a medicine and the amount to use; when clicking on the disease its symptoms and the money required to build a pharmacy will also be displayed
+* The game is designed for the player to slowly figure out which medicines are effective against which symptoms through trial and error, but it is also to learn the effectiveness of each medicine by reading the "medicineI" dictionary at the top of the Disease file
+* Once a medicine and amount is assigned to a disease, the disease will begin to visually shrink at a rate dictated by the effectivness of the medicine
+  * The medicine assigned to the disease will deplete over time, if the amount of medicine is not adequate, the disease will resume spreading, if there is an adequate amount of medicine, the disease will shrink until it disappears and it therefore cured (this all happens over time)
+* The player starts off with some medicine and can either source more medicine from the market or by paying to extract medicines from yellow pixels
+
+## Original Concept of the Game:
 ![opening screen](https://github.com/Mo59471/Programming-Group-Project-Immune-System-Tower-Defense-Oriental-Medicine-Tycoon/raw/main/%E9%81%93%E5%BE%B7%E5%AE%B6%E8%A3%BD%E8%97%A5%E4%BC%81%E6%A5%AD-DaoistPharmaceutical/Photos/Daoist%20Pharamaceutical%20Welcome%20Page.jpg?raw=true)
 ![difficulty select](https://github.com/Mo59471/Programming-Group-Project-Immune-System-Tower-Defense-Oriental-Medicine-Tycoon/blob/main/道德家製藥企業-DaoistPharmaceutical/Photos/Daoist%20Pharmaceutical%20Option%20Page.jpg?raw=true)
 
@@ -43,12 +63,14 @@ Opening scene: The player as the Jade Emperor's Son is sent down to East Asia fo
   
 &nbsp;
 
-## Group Tasks (Contributions for Project Development: Phase Three):
+## Team Contributions:
 
 1. **Ethan Tang**
-   - Main file, Result class, Disease class display functionality
+   - Framework of main file along with primary game logic
+   - Disease class display functionality
    - Implemented disease random spawning and displaying
    - Programmically drew the map
+   - UML
   
 &nbsp;
 
@@ -56,28 +78,26 @@ Opening scene: The player as the Jade Emperor's Son is sent down to East Asia fo
    - Button Class, Disease Class logic
    - Implemented Button collision detection, hoverability, and clickability
    - Implemented Main File timer
+   - Most of the UI design
   
 &nbsp;
 
 3. **Kai Yun Chao**
    - Market Class
    - Implemented Market displaying, called through a button click
+   - Effects of medicines against certain symptoms
+   - All of the research on Chinese Traditional Medicine 
   
 &nbsp;
 
 3. **Simon Sakata**
    - Resource Class
    - Implemented resource random spawining and displaying
+   - Playtesting
    
 ## ToDo List:
 **Top Priority Tasks:**
-* Update UML with current variables and methods
 * Add a pause Button to stop the in-game timer
-* Get started on player data
-  - Intergrate medicines into the Rescource and market class
-  - Create list to track the player's medicine and implement a money system
-  - Write interaction between Disease class and player's medicine and money
-* Ensure claimed pixels cannot be claimed by another class
   
 **Long-Term Tasks:**
 * Get started on reputation system
