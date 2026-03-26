@@ -1,13 +1,12 @@
 # Resource Class: Simon Sakata, Period 3B
+
 import math
 import random
 import pygame
 from Disease import Disease
 from Market import Market
+
 class Resource:
-   # Class Attributes: Lists of all possible symptoms, progressing in severity
-
-
    def __init__(self, year):
        self.year = year  # Takes year count from main file
        self.nRescource = random.randint(10,14)
@@ -36,8 +35,6 @@ class Resource:
        self.meds=self.symptoms
        self.cost=random.randint(self.nRescource*5-self.nRescource*3,self.nRescource*5+self.nRescource*3)
 
-
-   # Ethan Tang|3B
    def pick(self):
        r=random.randint(0,10)
        if r==1:
@@ -79,14 +76,12 @@ class Resource:
            del Disease.valid[i[0]][i[1]]
        return disease
 
-
    def areaRep(self):
        current=len(self.area)-1
        try:
            self.dictArea.setdefault(self.area[current][0],{}).setdefault(self.area[current][1],'a')
        except:
            pass
-
 
    def randGen(self):
        x = random.choice(list(Disease.valid.keys()))
@@ -96,12 +91,8 @@ class Resource:
        del Disease.valid[x][y]
        return self.spread(self.nRescource)
 
-
    def changeC(self):
        self.color = (230, 230, 100)
-
-
-
 
    def update(self):
        if self.accept:
