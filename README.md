@@ -86,7 +86,8 @@ Opening scene: The player as the Jade Emperor's Son is sent down to East Asia fo
    - Market Class
    - Implemented Market displaying, called through a button click
    - Effects of medicines against certain symptoms
-   - All of the research on Chinese Traditional Medicine 
+   - All of the research on Chinese Traditional Medicine
+   - GUI mock-up 
   
 &nbsp;
 
