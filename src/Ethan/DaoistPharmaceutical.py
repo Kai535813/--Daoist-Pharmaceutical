@@ -226,7 +226,7 @@ diseaseButtonData = []
 medNumButtonData = [{"label": "+", "x": 770, "y":630, "w": 40, "h": 40, "c1": (166, 111, 101), "c2": (133, 89, 81), "c3": (87, 58, 53), "shadowColor": (115, 81, 76), "show": False},
                     {"label": "-", "x": 830, "y":630, "w": 40, "h": 40, "c1": (166, 111, 101), "c2": (133, 89, 81), "c3": (87, 58, 53), "shadowColor": (115, 81, 76), "show": False},
                     {"label": "Done", "x": 890, "y":630, "w": 80, "h": 40, "c1": (166, 111, 101), "c2": (133, 89, 81), "c3": (87, 58, 53), "shadowColor": (115, 81, 76), "show": False}]
-
+sButton=Button('Start',1000,500,100,100,(207, 167, 160),(179, 141, 134),(118, 78, 71),(153, 135, 132),True)
 buttons = []
 marketButtons = []
 diseaseButtons = []
