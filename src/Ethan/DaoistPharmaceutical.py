@@ -26,154 +26,172 @@ def rDis():
 
 
 def display(screen, font1, font2, font3, font4, selectedMedicine, mouseClicked):
-    pygame.draw.rect(screen, (153, 135, 132), [1145, 15, 300, 800], 0, 45)
-    pygame.draw.rect(screen, (230, 184, 175), [1150, 20, 300, 800], 0, 45)
+    if start == True:
+        pygame.draw.rect(screen, (153, 135, 132), [1145, 15, 300, 800], 0, 45)
+        pygame.draw.rect(screen, (230, 184, 175), [1150, 20, 300, 800], 0, 45)
 
-    #Game Heading: Year, Money, Reputation
-    #Heading text shadow
-    shadeText = font2.render(f'Month:{year}', True, (118, 78, 71))
-    shadeTextRect = shadeText.get_rect()  # Gives you a rectangle object the size of the screen
-    shadeTextRect.center = (1170 + 128, 48)
-    screen.blit(shadeText, shadeTextRect)
+        # Game Heading: Year, Money, Reputation
+        # Heading text shadow
+        shadeText = font2.render(f'Month:{year}', True, (118, 78, 71))
+        # Gives you a rectangle object the size of the screen
+        shadeTextRect = shadeText.get_rect()
+        shadeTextRect.center = (1170 + 128, 48)
+        screen.blit(shadeText, shadeTextRect)
 
-    if playerD[0]/1000000>1 or playerD[0]/1000000<-1:
-        shadeText = font2.render(f'Money:{playerD[0]:.0e}元', True, (118, 78, 71))
-    else:
-        shadeText=  font2.render(f'Money:{playerD[0]:.0f}元', True, (118, 78, 71))
-    # Gives you a rectangle object the size of the screen
-    shadeTextRect = shadeText.get_rect()
-    shadeTextRect.center = (1170 + 128, 88)
-    screen.blit(shadeText, shadeTextRect)
+        if playerD[0]/1000000 > 1 or playerD[0]/1000000 < -1:
+            shadeText = font2.render(
+                f'Money:{playerD[0]:.0e}元', True, (118, 78, 71))
+        else:
+            shadeText = font2.render(
+                f'Money:{playerD[0]:.0f}元', True, (118, 78, 71))
+        # Gives you a rectangle object the size of the screen
+        shadeTextRect = shadeText.get_rect()
+        shadeTextRect.center = (1170 + 128, 88)
+        screen.blit(shadeText, shadeTextRect)
 
-    shadeText = font2.render(
-        f'Reputation:{playerD[1]:.4f}', True, (118, 78, 71))
-    # Gives you a rectangle object the size of the screen
-    shadeTextRect = shadeText.get_rect()
-    shadeTextRect.center = (1170 + 128, 128)
-    screen.blit(shadeText, shadeTextRect)
+        shadeText = font2.render(
+            f'Reputation:{playerD[1]:.4f}', True, (118, 78, 71))
+        # Gives you a rectangle object the size of the screen
+        shadeTextRect = shadeText.get_rect()
+        shadeTextRect.center = (1170 + 128, 128)
+        screen.blit(shadeText, shadeTextRect)
 
+        text = font2.render(f'Month:{year}', True, (255, 255, 255))
+        textRect = text.get_rect()  # Gives you a rectangle object the size of the screen
+        textRect.center = (1170 + 130, 50)
+        screen.blit(text, textRect)
 
-    text = font2.render(f'Month:{year}', True, (255, 255, 255))
-    textRect = text.get_rect()  # Gives you a rectangle object the size of the screen
-    textRect.center = (1170 + 130, 50)
-    screen.blit(text, textRect)
+        if playerD[0]/1000000 > 1 or playerD[0]/1000000 < -1:
+            text = font2.render(
+                f'Money:{playerD[0]:.0e}元', True, (255, 255, 255))
+        else:
+            text = font2.render(
+                f'Money:{playerD[0]:.0f}元', True, (255, 255, 255))
+        textRect = text.get_rect()  # Gives you a rectangle object the size of the screen
+        textRect.center = (1170 + 130, 90)
+        screen.blit(text, textRect)
 
-    if playerD[0]/1000000>1 or playerD[0]/1000000<-1:
-        text = font2.render(f'Money:{playerD[0]:.0e}元', True, (255, 255, 255))
-    else:
-        text=  font2.render(f'Money:{playerD[0]:.0f}元', True, (255, 255, 255))
-    textRect = text.get_rect()  # Gives you a rectangle object the size of the screen
-    textRect.center = (1170 + 130, 90)
-    screen.blit(text, textRect)
+        text = font2.render(
+            f'Reputation:{playerD[1]:.4f}', True, (255, 255, 255))
+        textRect = text.get_rect()  # Gives you a rectangle object the size of the screen
+        textRect.center = (1170 + 130, 130)
+        screen.blit(text, textRect)
 
-    text = font2.render(f'Reputation:{playerD[1]:.4f}', True, (255, 255, 255))
-    textRect = text.get_rect()  # Gives you a rectangle object the size of the screen
-    textRect.center = (1170 + 130, 130)
-    screen.blit(text, textRect)
+        showButton = False
 
-    showButton = False
+        if buttons[0].disT < 0:
+            market.display_market(screen)
 
-    if buttons[0].disT<0:
-        market.display_market(screen)
+        if buttons[1].disT < 0:
+            for i in upClasses:
+                if type(upClasses[i]) == Disease and upClasses[i].diseaseClicked == 1:
+                    for button in medNumButtons:
+                        button.show = True
+                    pygame.draw.rect(screen, (74, 52, 48), [
+                                     295, 85, 700, 600], 0, 30)
+                    pygame.draw.rect(screen, (118, 78, 71), [
+                                     300, 90, 700, 600], 0, 30)
+                    title = font2.render(
+                        "Add Medicine to Pharmacy", True, (255, 255, 255))
+                    titleRect = title.get_rect()
+                    titleRect.center = (650, 120)
+                    screen.blit(title, titleRect)
+                    medText = font3.render(
+                        selectedMedicine, True, (255, 255, 255))
+                    medRect = medText.get_rect()
+                    medRect.topleft = (320, 630)
+                    screen.blit(medText, medRect)
+                    medText = font3.render(
+                        f"Quantity: {medNum}", True, (255, 255, 255))
+                    medRect = medText.get_rect()
+                    medRect.topleft = (580, 630)
+                    screen.blit(medText, medRect)
+        else:
+            for button in medNumButtons:
+                button.show = False
 
-    if buttons[1].disT <0:
-        for i in upClasses:
-            if type(upClasses[i]) == Disease and upClasses[i].diseaseClicked == 1:
-                for button in medNumButtons:
-                    button.show = True
-                pygame.draw.rect(screen, (74, 52, 48), [295, 85, 700, 600], 0, 30)
-                pygame.draw.rect(screen, (118, 78, 71), [300, 90, 700, 600], 0, 30)
-                title = font2.render("Add Medicine to Pharmacy", True, (255,255,255))
-                titleRect = title.get_rect()
-                titleRect.center = (650, 120)
-                screen.blit(title, titleRect)
-                medText = font3.render(selectedMedicine, True, (255,255,255))
-                medRect = medText.get_rect()
-                medRect.topleft = (320,630)
-                screen.blit(medText, medRect)
-                medText = font3.render(f"Quantity: {medNum}", True, (255,255,255))
-                medRect = medText.get_rect()
-                medRect.topleft = (580, 630)
-                screen.blit(medText, medRect)
-    else:
-        for button in medNumButtons:
-            button.show = False
-
-
-    if buttons[2].disT<0:
-        pygame.draw.rect(screen, (74, 52, 48), [815, 85, 320, 600], 0, 30)
-        pygame.draw.rect(screen, (118, 78, 71), [820, 90, 320, 600], 0, 30)
-        r = 120
-        for i in playerM:
-            #if playerM[i] != 0:
+        if buttons[2].disT < 0:
+            pygame.draw.rect(screen, (74, 52, 48), [815, 85, 320, 600], 0, 30)
+            pygame.draw.rect(screen, (118, 78, 71), [820, 90, 320, 600], 0, 30)
+            r = 120
+            for i in playerM:
+                # if playerM[i] != 0:
                 title = font3.render(
                     f'{i} : {playerM[i]}', True, (255, 255, 255))
                 titleRect = title.get_rect()  # Gives you a rectangle object the size of the screen
                 titleRect.center = (975, r)
                 screen.blit(title, titleRect)
                 r = r+26
-    # Ethan Tang and Mo Spiegel
-    # Display logic when a disease or resource is clicked
-    for d in upClasses:
+        # Ethan Tang and Mo Spiegel
+        # Display logic when a disease or resource is clicked
+        for d in upClasses:
 
-        if upClasses[d].diseaseClicked == 1:  # 160
-            pygame.draw.rect(screen, (118, 78, 71), [1170, 240, 260, 360], 0, 45)
-            title = font2.render(
-                upClasses[d].__class__.__name__, True, (255, 255, 255))
-            titleRect = title.get_rect()  # Gives you a rectangle object the size of the screen
-            titleRect.center = (1170 + 130, 280)
-            screen.blit(title, titleRect)
+            if upClasses[d].diseaseClicked == 1:  # 160
+                pygame.draw.rect(screen, (118, 78, 71), [
+                                 1170, 240, 260, 360], 0, 45)
+                title = font2.render(
+                    upClasses[d].__class__.__name__, True, (255, 255, 255))
+                titleRect = title.get_rect()  # Gives you a rectangle object the size of the screen
+                titleRect.center = (1170 + 130, 280)
+                screen.blit(title, titleRect)
 
-            text = font2.render(upClasses[d].info, True, (255, 255, 255))
-            textRect = text.get_rect()  # Gives you a rectangle object the size of the screen
-            textRect.center = (1170 + 130, 330)
-            screen.blit(text, textRect)
-            text = font3.render(f'Cost:{upClasses[d].cost}元', True, (255, 255, 255))
-            textRect = text.get_rect()  # Gives you a rectangle object the size of the screen
-            textRect.center = (1170 + 130, 375)
-            screen.blit(text, textRect)
+                text = font2.render(upClasses[d].info, True, (255, 255, 255))
+                textRect = text.get_rect()  # Gives you a rectangle object the size of the screen
+                textRect.center = (1170 + 130, 330)
+                screen.blit(text, textRect)
+                text = font3.render(
+                    f'Cost:{upClasses[d].cost}元', True, (255, 255, 255))
+                textRect = text.get_rect()  # Gives you a rectangle object the size of the screen
+                textRect.center = (1170 + 130, 375)
+                screen.blit(text, textRect)
 
-            # Symptoms:
-            for i in upClasses[d].symptoms:
-                sympText = font4.render(i, True, (255, 255, 255))
-                sympRect = sympText.get_rect()
-                sympRect.center = (1170 + 130, 420 +
-                                   upClasses[d].symptoms.index(i)*25)
-                screen.blit(sympText, sympRect)
+                # Symptoms:
+                for i in upClasses[d].symptoms:
+                    sympText = font4.render(i, True, (255, 255, 255))
+                    sympRect = sympText.get_rect()
+                    sympRect.center = (1170 + 130, 420 +
+                                       upClasses[d].symptoms.index(i)*25)
+                    screen.blit(sympText, sympRect)
 
-            showButton = True
-            break
-        else:
-            pass
+                showButton = True
+                break
+            else:
+                pass
 
-    buttons[1].show = showButton
+        buttons[1].show = showButton
 
-   #Display all buttons
-    for i in buttons:
-        i.hover()
-    for i in marketButtons:
-        i.hover()
-    for i in diseaseButtons:
-        i.hover()
-    for i in medNumButtons:
-        i.hover()
+    # Display all buttons
+        for i in buttons:
+            i.hover()
+        for i in marketButtons:
+            i.hover()
+        for i in diseaseButtons:
+            i.hover()
+        for i in medNumButtons:
+            i.hover()
 
-    buttons[0].display(screen, font1, mouseClicked)
-    buttons[1].display(screen, font2, mouseClicked)
-    buttons[2].display(screen, font2, mouseClicked)
-    for i in marketButtons:
-        i.display(screen,font3,mouseClicked)
-    for i in diseaseButtons:
-        i.display(screen,font4,mouseClicked)
-    medNumButtons[0].display(screen, font1, mouseClicked)
-    medNumButtons[1].display(screen, font1, mouseClicked)
-    medNumButtons[2].display(screen, font3, mouseClicked)
+        buttons[0].display(screen, font1, mouseClicked)
+        buttons[1].display(screen, font2, mouseClicked)
+        buttons[2].display(screen, font2, mouseClicked)
+        for i in marketButtons:
+            i.display(screen, font3, mouseClicked)
+        for i in diseaseButtons:
+            i.display(screen, font4, mouseClicked)
+        medNumButtons[0].display(screen, font1, mouseClicked)
+        medNumButtons[1].display(screen, font1, mouseClicked)
+        medNumButtons[2].display(screen, font3, mouseClicked)
+    else:
+        screen.blit(welcome, (0, 0))
+        sButton.hover()
+        sButton.display(screen, font0, mouseClicked)
 
     pygame.display.flip()  # Updates the pygame screen based on what is set in memory
 
     pygame.display.flip()  # Updates the pygame screen based on what you've set in memory
 
 # Ethan Tang
+
+
 def extract(valid, pKey=None):
     for key, value in valid.items():
         fKey = f"{pKey}.{key}" if pKey else key
@@ -187,10 +205,13 @@ def extract(valid, pKey=None):
 mouseClicked = False
 pygame.init()
 screen = pygame.display.set_mode((1472, 836))
+welcome = pygame.transform.smoothscale(pygame.image.load(
+    'Daoist PharamaceuticalWelcomePage.png').convert(), (1472, 836))
 next = 0
 year = 1
 time = 0
-min=0
+min = 0
+start = False
 timerI = {}
 playerD = [500, 20]
 playerM = {"金银花(Honeysuckle)": 10, "枸杞(Goji Berry)": 30, "菊花(Chrysanthemum)": 10, "砷(Arsenic)": 0, "竹蜂(Carpenter Bee)": 0, "人参(Ginseng)": 0,
@@ -204,8 +225,8 @@ clock = pygame.time.Clock()
 font1 = pygame.font.Font("MaShanZheng-Regular.ttf", 50)
 font2 = pygame.font.Font("MaShanZheng-Regular.ttf", 40)
 font3 = pygame.font.Font("MaShanZheng-Regular.ttf", 30)
-font4= pygame.font.Font("MaShanZheng-Regular.ttf", 20)
-font0= pygame.font.Font("MaShanZheng-Regular.ttf", 100)
+font4 = pygame.font.Font("MaShanZheng-Regular.ttf", 20)
+font0 = pygame.font.Font("MaShanZheng-Regular.ttf", 100)
 backI = pygame.transform.smoothscale(pygame.image.load(
     'DaoistPharmaceuticalBackground.png').convert(), (1472, 836))
 
@@ -214,19 +235,22 @@ backI = pygame.transform.smoothscale(pygame.image.load(
 buttonData = [  # Stores dictionary for each button's data
     {"label": "Market", "x": 1170, "y": 700, "w": 260, "h": 100,
      "c1": (207, 167, 160), "c2": (179, 141, 134),
-     "c3": (118, 78, 71), "shadowColor": (153, 135, 132), "show":True},
-     {"label": "Accept", "x": 1190, "y": 520, "w": 220, "h": 60, "c1": (166, 111, 101), "c2": (
+     "c3": (118, 78, 71), "shadowColor": (153, 135, 132), "show": True},
+    {"label": "Accept", "x": 1190, "y": 520, "w": 220, "h": 60, "c1": (166, 111, 101), "c2": (
         133, 89, 81), "c3": (87, 58, 53), "shadowColor": (115, 81, 76), "show": False},
     {"label": "Inventory", "x": 1170, "y": 625, "w": 260, "h": 60, "c1": (207, 167, 160), "c2": (
         179, 141, 134), "c3": (118, 78, 71), "shadowColor": (153, 135, 132), "show": True}
 ]
 
-marketButtonData =[]
+marketButtonData = []
 diseaseButtonData = []
-medNumButtonData = [{"label": "+", "x": 770, "y":630, "w": 40, "h": 40, "c1": (166, 111, 101), "c2": (133, 89, 81), "c3": (87, 58, 53), "shadowColor": (115, 81, 76), "show": False},
-                    {"label": "-", "x": 830, "y":630, "w": 40, "h": 40, "c1": (166, 111, 101), "c2": (133, 89, 81), "c3": (87, 58, 53), "shadowColor": (115, 81, 76), "show": False},
-                    {"label": "Done", "x": 890, "y":630, "w": 80, "h": 40, "c1": (166, 111, 101), "c2": (133, 89, 81), "c3": (87, 58, 53), "shadowColor": (115, 81, 76), "show": False}]
-sButton=Button('Start',1000,500,100,100,(207, 167, 160),(179, 141, 134),(118, 78, 71),(153, 135, 132),True)
+medNumButtonData = [{"label": "+", "x": 770, "y": 630, "w": 40, "h": 40, "c1": (166, 111, 101), "c2": (133, 89, 81), "c3": (87, 58, 53), "shadowColor": (115, 81, 76), "show": False},
+                    {"label": "-", "x": 830, "y": 630, "w": 40, "h": 40, "c1": (166, 111, 101), "c2": (
+                        133, 89, 81), "c3": (87, 58, 53), "shadowColor": (115, 81, 76), "show": False},
+                    {"label": "Done", "x": 890, "y": 630, "w": 80, "h": 40, "c1": (166, 111, 101), "c2": (133, 89, 81), "c3": (87, 58, 53), "shadowColor": (115, 81, 76), "show": False}]
+sButton = Button('Start', 600, 555, 300, 100, (207, 167, 160),
+                 (179, 141, 134), (118, 78, 71), (153, 135, 132), True)
+sButton.color = (0, 0, 0)
 buttons = []
 marketButtons = []
 diseaseButtons = []
@@ -242,11 +266,12 @@ for data in buttonData:
     buttons.append(Button(**data))
 for data in medNumButtonData:
     medNumButtons.append(Button(**data))
-back=pygame.transform.smoothscale(pygame.image.load('DaoistPharmaceuticalBackground.png').convert(),(1472,836))
+back = pygame.transform.smoothscale(pygame.image.load(
+    'DaoistPharmaceuticalBackground.png').convert(), (1472, 836))
 screen.blit(backI, (0, 0))
 running = True
 while running:
-    if playerD[1]>min:
+    if playerD[1] > min and start == True:
         # poll for events
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -258,7 +283,7 @@ while running:
                         mouseX, mouseY = pygame.mouse.get_pos()
                         if mouseX >= i.x and mouseX <= i.x + i.w and mouseY >= i.y and mouseY <= i.y + i.h:
                             if i.label == "Market":
-                                buttons[0].disT= buttons[0].disT*-1
+                                buttons[0].disT = buttons[0].disT*-1
                                 buttons[1].disT = 1
                                 buttons[2].disT = 1
                                 if i.disT < 0:
@@ -271,7 +296,7 @@ while running:
                                     for (bx, by), (category, (name, cost)) in zip(market_positions, market.inventory.items()):
                                         marketButtonData.append({
                                             "label": f"{name}  ${cost}",
-                                            "x": bx, "y": by, "w": 280, "h": 50,
+                                            "x": bx, "y": by, "w": 200, "h": 30,
                                             "c1": (207, 167, 160), "c2": (179, 141, 134),
                                             "c3": (118, 78, 71), "shadowColor": (153, 135, 132),
                                             "show": True
@@ -279,38 +304,39 @@ while running:
                                     marketButtons = []
                                     for data in marketButtonData:
                                         marketButtons.append(Button(**data))
-                                    buttons[0].disT=-1
-                                elif i.disT>0:
+                                    buttons[0].disT = -1
+                                elif i.disT > 0:
                                     nPause = True
                                     marketButtonData.clear()
                                     marketButtons.clear()
                                     rDis()
 
-                            #Mo SpiegeL
-                            #Accept button functionality
+                            # Mo SpiegeL
+                            # Accept button functionality
                             elif i.label == "Accept":
                                 for disease in upClasses:
                                     if upClasses[disease].diseaseClicked == 1:
                                         upClasses[disease].accept = True
                                         upClasses[disease].changeC()
-                                        if type(upClasses[disease])==Disease:
+                                        if type(upClasses[disease]) == Disease:
                                             buttons[0].disT = 1
                                             buttons[2].disT = 1
                                             i.disT = i.disT * -1
-                                            if i.disT <0:                                       
+                                            if i.disT < 0:
                                                 nPause = False
-                                                medicinePositions = [(320,160),(550, 160),(780,160),(320,225),(550,225),(780,225),(320,290),(550,290),(780,290),(320,355),(550,355),
-                                                                    (780,355),(320,420),(550,420),(780,420),(320,485),(550,485),(780,485),(320,550),(550,550),(780,550)]
-                                                for (key,value), (a,b) in zip(playerM.items(), medicinePositions):
+                                                medicinePositions = [(320, 160), (550, 160), (780, 160), (320, 225), (550, 225), (780, 225), (320, 290), (550, 290), (780, 290), (320, 355), (550, 355),
+                                                                     (780, 355), (320, 420), (550, 420), (780, 420), (320, 485), (550, 485), (780, 485), (320, 550), (550, 550), (780, 550)]
+                                                for (key, value), (a, b) in zip(playerM.items(), medicinePositions):
                                                     diseaseButtonData.append({"label": f"{key} : {value}",
-                                                            "x": a, "y": b, "w": 200, "h": 40,
-                                                            "c1": (207, 167, 160), "c2": (179, 141, 134),
-                                                            "c3": (118, 78, 71), "shadowColor": (153, 135, 132),
-                                                            "show": True
-                                                        })
+                                                                              "x": a, "y": b, "w": 200, "h": 40,
+                                                                              "c1": (207, 167, 160), "c2": (179, 141, 134),
+                                                                              "c3": (118, 78, 71), "shadowColor": (153, 135, 132),
+                                                                              "show": True
+                                                                              })
                                                 diseaseButtons = []
                                                 for data in diseaseButtonData:
-                                                    diseaseButtons.append(Button(**data))
+                                                    diseaseButtons.append(
+                                                        Button(**data))
                                                     buttons[1].disT = -1
                                             else:
                                                 nPause = True
@@ -320,65 +346,70 @@ while running:
 
                                 for i2 in range(len(upClasses[disease].area)):
                                     if upClasses[disease].accept == True:
-                                        pygame.draw.rect(screen, upClasses[disease].color,[upClasses[disease].area[i2][0],upClasses[disease].area[i2][1],10,10])      
+                                        pygame.draw.rect(screen, upClasses[disease].color, [
+                                                         upClasses[disease].area[i2][0], upClasses[disease].area[i2][1], 10, 10])
                                     else:
-                                        pygame.draw.rect(screen, upClasses[disease].color,[upClasses[disease].area[i2][0],upClasses[disease].area[i2][1],10,10])
-                            
-                            #Mo Spiegel
-                            #Inventory button functionality 
-                            elif i.label=="Inventory":
+                                        pygame.draw.rect(screen, upClasses[disease].color, [
+                                                         upClasses[disease].area[i2][0], upClasses[disease].area[i2][1], 10, 10])
+
+                            # Mo Spiegel
+                            # Inventory button functionality
+                            elif i.label == "Inventory":
                                 buttons[1].disT = 1
                                 buttons[0].disT = 1
-                                buttons[2].disT=buttons[2].disT*-1
-                                if buttons[2].disT <0:
+                                buttons[2].disT = buttons[2].disT*-1
+                                if buttons[2].disT < 0:
                                     nPause = False
                                 else:
                                     nPause = True
                                     rDis()
-                    
-                    #Kai Yun Chao
-                    #Buttons inside market functionality
+
+                    # Kai Yun Chao
+                    # Buttons inside market functionality
                     for i in marketButtons:
                         mouseX, mouseY = pygame.mouse.get_pos()
                         if mouseX >= i.x and mouseX <= i.x + i.w and mouseY >= i.y and mouseY <= i.y + i.h:
                             name = i.label.split("  $")[0]
                             if name in playerM:
                                 playerM[name] += 1
-                                print(f"Bought {name}. Total owned: {playerM[name]}")
-                                playerD[0]=playerD[0]-int(i.label.rsplit("$")[1])
-                    
-                    #Mo Spiegel
-                    #Medicine selection button functionality
+                                print(
+                                    f"Bought {name}. Total owned: {playerM[name]}")
+                                playerD[0] = playerD[0] - \
+                                    int(i.label.rsplit("$")[1])
+
+                    # Mo Spiegel
+                    # Medicine selection button functionality
                     for i in diseaseButtons:
                         mouseX, mouseY = pygame.mouse.get_pos()
                         if mouseX >= i.x and mouseX <= i.x + i.w and mouseY >= i.y and mouseY <= i.y + i.h:
                             medNum = 0
                             selectedMedicine = i.label[0:i.label.index(":")-1]
-                    
-                    #Mo Spiegel
-                    #Medicine quantity selection button functionality
+
+                    # Mo Spiegel
+                    # Medicine quantity selection button functionality
                     for i in medNumButtons:
                         mouseX, mouseY = pygame.mouse.get_pos()
                         if mouseX >= i.x and mouseX <= i.x + i.w and mouseY >= i.y and mouseY <= i.y + i.h:
                             if i.label == "+":
                                 medNum = medNum + 1
-                            elif i.label == "-" and medNum>0:
-                                medNum = medNum -1
+                            elif i.label == "-" and medNum > 0:
+                                medNum = medNum - 1
                             elif i.label == "Done":
                                 if selectedMedicine in playerM.keys():
-                                    if playerM[selectedMedicine] >= medNum:
-                                        playerM[selectedMedicine] = playerM[selectedMedicine]-medNum
-                                        for disease in upClasses:
-                                            if upClasses[disease].diseaseClicked == 1:
-                                                if playerD[0] >= upClasses[disease].cost:
-                                                    playerD[0]=playerD[0]-upClasses[disease].cost
-                                                    upClasses[disease].addMeds(selectedMedicine, medNum)
-                                                    buttons[1].disT = 1
-                                                    nPause = True
-                                                    rDis()
-                    
-                    #Ethan Tang
-                    #Disease clicking logic
+                                    playerM[selectedMedicine] = playerM[selectedMedicine]-medNum
+                                    for disease in upClasses:
+                                        if upClasses[disease].diseaseClicked == 1:
+                                            if playerD[0] >= upClasses[disease].cost:
+                                                playerD[0] = playerD[0] - \
+                                                    upClasses[disease].cost
+                                                upClasses[disease].addMeds(
+                                                    selectedMedicine, medNum)
+                                                buttons[1].disT = 1
+                                                nPause = True
+                                                rDis()
+
+                    # Ethan Tang
+                    # Disease clicking logic
                     mouseX, mouseY = pygame.mouse.get_pos()
                     mouseX = int(mouseX/11) * 11
                     mouseY = int(mouseY/11) * 11
@@ -389,70 +420,79 @@ while running:
                                 upClasses[d].diseaseClicked = upClasses[d].diseaseClicked * -1
                             for d1 in upClasses:
                                 if upClasses[d1] == upClasses[d]:
-                                    continue
+                                    continue                                
                                 else:
-                                    if buttons[1].disT>0:
+                                    if buttons[1].disT > 0:
                                         upClasses[d1].diseaseClicked = -1
-                            break 
+                            if upClasses[d].diseaseClicked == 1:
+                                nPause = False
+                            else:
+                                nPause = True
+                                rDis()
+                            break
                         except:
                             pass
             if event.type == pygame.MOUSEBUTTONUP:
                 if event.button == 1:
                     mouseClicked = False
-        #Ethan Tang
-        #Game update loop        
+        # Ethan Tang
+        # Game update loop
         if nPause:
-            time = time +100
-            if time >= 2000:
+            time = time + 100
+            if time >= 1000:
                 time = 0
                 year = year + 1
-                if year== random.randint(year-1,year+1) and len(upClasses)<7:
-                    r=random.randint(0,1)
+                if year == random.randint(year-1, year+1) and len(upClasses) < 7:
+                    r = random.randint(0, 1)
                     if r == 1:
-                        upClasses[next]=Disease(year,False)
+                        upClasses[next] = Disease(year, False)
                     else:
-                        upClasses[next]=Resource(year)
+                        upClasses[next] = Resource(year)
                     if year+1 in timerI:
                         timerI[year+1].append(next)
                     else:
-                        timerI.update({year+1:[next]})
-                    dPixels=upClasses[next].randGen()
+                        timerI.update({year+1: [next]})
+                    dPixels = upClasses[next].randGen()
                     for i in range(len(dPixels)):
-                        pygame.draw.rect(screen, (upClasses[next].color),[dPixels[i][0],dPixels[i][1],10,10])
-                    next=next+1
+                        pygame.draw.rect(screen, (upClasses[next].color), [
+                                         dPixels[i][0], dPixels[i][1], 10, 10])
+                    next = next+1
                 if year in timerI:
-                    for i in range(len(timerI[year])-1,-1,-1):
-                        re=upClasses[timerI[year][i]].update()
-                        playerD[0]=playerD[0]+re[1]
-                        playerD[1]=playerD[1]+re[2]
-                        dPixels=re[0]
-                        if type(upClasses[timerI[year][i]])==Resource and len(re)>3:
-                            playerM[re[3]]=playerM[re[3]]+re[4]
+                    for i in range(len(timerI[year])-1, -1, -1):
+                        re = upClasses[timerI[year][i]].update()
+                        playerD[0] = playerD[0]+re[1]
+                        playerD[1] = playerD[1]+re[2]
+                        dPixels = re[0]
+                        if type(upClasses[timerI[year][i]]) == Resource and len(re) > 3:
+                            playerM[re[3]] = playerM[re[3]]+re[4]
 
                         if dPixels == upClasses[timerI[year][i]].delete:
                             for i2 in range(len(dPixels)):
-                                pygame.draw.rect(screen, (dPixels[i2][2],dPixels[i2][3],dPixels[i2][4]),[dPixels[i2][0],dPixels[i2][1],10,10])
+                                pygame.draw.rect(screen, (dPixels[i2][2], dPixels[i2][3], dPixels[i2][4]), [
+                                                 dPixels[i2][0], dPixels[i2][1], 10, 10])
                         else:
                             for i2 in range(len(dPixels)):
-                                pygame.draw.rect(screen, (upClasses[timerI[year][i]].color),[dPixels[i2][0],dPixels[i2][1],10,10])                 
-                        if upClasses[timerI[year][i]].cured==False:
+                                pygame.draw.rect(screen, (upClasses[timerI[year][i]].color), [
+                                                 dPixels[i2][0], dPixels[i2][1], 10, 10])
+                        if upClasses[timerI[year][i]].cured == False:
                             if year+1 in timerI:
                                 timerI[year+1].append(timerI[year][i])
                             else:
                                 timerI.update({year+1: [timerI[year][i]]})
-                if playerD[0]<0:
-                    playerD[0]=playerD[0]+((abs(playerD[0])//100)*0.1)*playerD[0]
-                    if playerD[0]<300:
-                        if random.randint(0,3)==0:
-                            playerD[1]=playerD[1]+(0.1*playerD[0])
+                if playerD[0] < 0:
+                    playerD[0] = playerD[0] + \
+                        ((abs(playerD[0])//100)*0.1)*playerD[0]
+                    if playerD[0] < 300:
+                        if random.randint(0, 3) == 0:
+                            playerD[1] = playerD[1]+(0.1*playerD[0])
                             print(0)
-            cured=[]
+            cured = []
             for i3 in upClasses:
                 if upClasses[i3].cured:
                     cured.append(i3)
             for i4 in cured:
                 del upClasses[i4]
-            if year%7==0:
+            if year % 7 == 0:
                 market.stock(year)
 
         if buttons[0].disT > 0:
@@ -461,22 +501,39 @@ while running:
         if buttons[1].disT > 0:
             diseaseButtonData.clear()
             diseaseButtons.clear()
-            
-        display(screen, font1, font2, font3, font4, selectedMedicine, mouseClicked)
+
+        display(screen, font1, font2, font3, font4,
+                selectedMedicine, mouseClicked)
         clock.tick(10)
+    elif playerD[1] < min:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                running = False
+        screen.blit(back, (0, 0))
+        text = font0.render('Game Over', True, (0, 0, 20))
+        textRect = text.get_rect()  # Gives you a rectangle object the size of the screen
+        textRect.center = (1472/2, 50)
+        screen.blit(text, textRect)
+        text = font0.render(
+            'The Jade Emperor Will Bail You Out', True, (0, 0, 20))
+        textRect = text.get_rect()  # Gives you a rectangle object the size of the screen
+        textRect.center = (1472/2, 200)
+        screen.blit(text, textRect)
+        clock.tick(10)
+        pygame.display.flip()
     else:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
-        screen.blit(back, (0,0))
-        text = font0.render('Game Over', True, (0, 0, 20))
-        textRect = text.get_rect()  # Gives you a rectangle object the size of the screen
-        textRect.center = (1472/2,50)
-        screen.blit(text, textRect)
-        text = font0.render('The Jade Emperor Will Bail You Out', True, (0, 0, 20))
-        textRect = text.get_rect()  # Gives you a rectangle object the size of the screen
-        textRect.center = (1472/2,200)
-        screen.blit(text, textRect)
-        clock.tick(10)
-    pygame.display.flip()
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                if event.button == 1:
+                    mouseClicked = True
+                    mouseX, mouseY = pygame.mouse.get_pos()
+                    if mouseX >= sButton.x and mouseX <= sButton.x + sButton.w and mouseY >= sButton.y and mouseY <= sButton.y + sButton.h:
+                        start = True
+                        sButton.show = False
+                        screen.blit(backI, (0, 0))
+        display(screen, font1, font2, font3, font4,
+                selectedMedicine, mouseClicked)
+        pygame.display.flip()
 pygame.quit()
