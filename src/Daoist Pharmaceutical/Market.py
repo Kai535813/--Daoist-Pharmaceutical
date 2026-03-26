@@ -32,7 +32,7 @@ class Market:
     TCM3Cost = (100, 160)
 
 
-    # Western medicine prices are not decided yet.
+    
     WestLowCost = (50, 75)
     WestHighCost = (100, 150)
     WestUltraCost = (160, 200)
@@ -49,6 +49,7 @@ class Market:
         return (name, cost)
 
 
+    # Identities of all the medicine tiers.
     def stock(self,year):
      if year>80:
         self.inventory = {
@@ -71,6 +72,7 @@ class Market:
         try:
             background = pygame.image.load("Market.png")
             background = pygame.transform.scale(background, (960, 420))
+            # Finds all black pixels.
             background.set_colorkey((0, 0, 0))
 
         except pygame.error as e:
