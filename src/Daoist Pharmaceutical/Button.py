@@ -1,13 +1,6 @@
 # Button Class: Mo Spiegel, Period 3B
 
-
-# -----------------------------------------------------------------------------------
-# Added a bunch of stuff all over this class, including show member variable; just replace everything in the old button class
-# -----------------------------------------------------------------------------------
 import pygame
-
-
-
 
 class Button:
     def __init__(self, label, x, y, w, h, c1, c2, c3, shadowColor, show):
@@ -25,28 +18,16 @@ class Button:
         self.disT = 1
         self.color=(255,255,255)
 
-
-    # Draws button to screen
-
-
-    # Takes screen as an argument to draw shapes
     def display(self, screen, font, mouseClicked):
         if self.show == True:
-            # Rectangle: Takes arguments: (surface, color, [x,y,w,h], width, cornerCurves)
-            pygame.draw.rect(screen, self.shadowColor, [
-                             self.x-5, self.y-5, self.w, self.h], 0, 30)  # Drop shadow
+            pygame.draw.rect(screen, self.shadowColor, [self.x-5, self.y-5, self.w, self.h], 0, 30)  # Drop shadow
             if self.over == True and mouseClicked == True:
-                pygame.draw.rect(screen, self.c3, [
-                                 self.x, self.y, self.w, self.h], 0, 30)
+                pygame.draw.rect(screen, self.c3, [self.x, self.y, self.w, self.h], 0, 30)
             elif self.over == False:
-                pygame.draw.rect(screen, self.c1, [
-                                 self.x, self.y, self.w, self.h], 0, 30)
+                pygame.draw.rect(screen, self.c1, [self.x, self.y, self.w, self.h], 0, 30)
             elif self.over == True and mouseClicked == False:
-                pygame.draw.rect(screen, self.c2, [
-                                 self.x, self.y, self.w, self.h], 0, 30)
+                pygame.draw.rect(screen, self.c2, [self.x, self.y, self.w, self.h], 0, 30)
 
-
-            # Text: Takes arguments: (text, position(in form of rectangle coords))
             text = font.render(self.label, True, self.color)
             textRect = text.get_rect()  # Gives you a rectangle object the size of the screen
             textRect.center = (self.x + self.w/2, self.y + self.h/2)
