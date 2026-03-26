@@ -193,10 +193,10 @@ time = 0
 min=0
 timerI = {}
 playerD = [500, 20]
-playerM = {"金银花(Honeysuckle)": 0, "枸杞(Goji Berry)": 30, "菊花(Chrysanthemum)": 0, "砷(Arsenic)": 0, "竹蜂(Carpenter Bee)": 0, "人参(Ginseng)": 0,
+playerM = {"金银花(Honeysuckle)": 10, "枸杞(Goji Berry)": 30, "菊花(Chrysanthemum)": 10, "砷(Arsenic)": 0, "竹蜂(Carpenter Bee)": 0, "人参(Ginseng)": 0,
            "燕窝(Swallow Nest)": 0, "水银(Mercury)": 0, "牛黄(Cattle Gallstone)": 0, "鹿茸(Velvet Deer Antler)": 0,
            "龟板(Turtle Shell)": 0, "虎骨(Tiger Bone)": 0, "犀角(Rhinoceros Horn)": 0, "Ibuprofen": 0, "Paracetamol": 0,
-           "Amoxicillin": 0, "Valacyclovir": 0, "Rifampin": 0, "Morphine": 0, "Fentanyl": 1000, "Tigecycline": 0}
+           "Amoxicillin": 0, "Valacyclovir": 0, "Rifampin": 0, "Morphine": 0, "Fentanyl": 0, "Tigecycline": 0}
 selectedMedicine = ""
 medDisplay = True
 medNum = 0
