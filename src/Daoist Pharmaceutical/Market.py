@@ -1,14 +1,10 @@
+# Market Class: Kai Yun Chao, Period 3B
 
-
-# Kai Yun Chao
-# Market Class
 import random
 import pygame
 import os
 
-
 class Market:
-    # None of the rarity is actually decided yet.
     TCM1Names = ["金银花(Honeysuckle)", "枸杞(Goji Berry)",
                  "菊花(Chrysanthemum)", "砷(Arsenic)"]
     TCM1Rarity = [1, 1, 5, 10]
@@ -26,28 +22,22 @@ class Market:
     WestUltraNames = ["Fentanyl", "Tigecycline"]
     WestUltraRarity = [1, 1]
 
-
     TCM1Cost = (10, 20)
     TCM2Cost = (50, 80)
     TCM3Cost = (100, 160)
 
-
-    
     WestLowCost = (50, 75)
     WestHighCost = (100, 150)
     WestUltraCost = (160, 200)
-
 
     def __init__(self):
         self.options = {}
         self.stock(0)
 
-
     def _pick(self, names, cost_range, rarity=None):
         name = random.choices(names, weights=rarity, k=1)[0]
         cost = random.randint(*cost_range)
         return (name, cost)
-
 
     # Identities of all the medicine tiers.
     def stock(self,year):
@@ -68,7 +58,6 @@ class Market:
         }
 
     def display_market(self, screen):
-
         try:
             background = pygame.image.load("Market.png")
             background = pygame.transform.scale(background, (960, 420))
