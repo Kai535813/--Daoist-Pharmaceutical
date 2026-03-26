@@ -34,7 +34,7 @@ class Resource:
         r = 0
        med = (Market.TCM1Names, Market.TCM2Names, Market.TCM3Names,
               Market.TCM1Rarity, Market.TCM2Rarity, Market.TCM3Rarity)
-       self.symptoms=(random.choices(med[r],weights=med[r+3],k=1)[0])
+       self.symptoms=((random.choices(med[r],weights=med[r+3],k=1)[0]),"")
        self.meds=self.symptoms
        self.cost=random.randint(self.nRescource*5-self.nRescource*3,self.nRescource*5+self.nRescource*3)
 
