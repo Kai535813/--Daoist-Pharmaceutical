@@ -69,7 +69,7 @@ class Market:
             background = None
 
         if background:
-            pygame.draw.rect(screen, (118, 78, 71),[0,0,960,420],0,45)
+            pygame.draw.rect(screen, (118, 78, 71),[0,0,960,300],0,45)
             screen.blit(background, (0, 0))
 
         else:
