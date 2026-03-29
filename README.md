@@ -59,7 +59,7 @@ Opening scene: The player as the Jade Emperor's Son is sent down to East Asia fo
 * Tiger Bone
 
 ## UML:
-![DaoistUML](https://github.com/Kai535813/--Daoist-Pharmaceutical/blob/main/images/DaoistPharaceuticalUML.jpg?raw=true)
+![DaoistUML](https://github.com/Kai535813/--Daoist-Pharmaceutical/blob/main/images/DaoistPharmaceuticalUML.png?raw=true)
   
 &nbsp;
 
